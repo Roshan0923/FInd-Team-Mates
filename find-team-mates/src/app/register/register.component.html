@@ -1,0 +1,126 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 min-vh-100 d-flex flex-column justify-content-center">
+      <div class="row">
+        <div class="col-lg-6 col-md-8 mx-auto">
+
+          <!-- form card Registration -->
+          <div class="card rounded shadow shadow-sm">
+            <div class="card-header">
+              <h3 class="mb-0">Registration Form</h3>
+            </div>
+            <div class="card-body">
+
+              <mat-vertical-stepper>
+                <mat-step [stepControl]="firstFormGroup">
+                  <form [formGroup]="firstFormGroup">
+                    <ng-template matStepLabel>Fill out your personal information</ng-template>
+                    <!-- user name -->
+                    <div>
+                      <mat-form-field style="width: 100%;">
+                        <mat-label>Name</mat-label>
+                        <input matInput placeholder="Last name, First name" formControlName="name" required>
+                      </mat-form-field>
+                    </div>
+                    <!-- Email -->
+                    <div class="row">
+                      <div class="col">
+
+                        <mat-form-field>
+                          <mat-label>Email</mat-label>
+                          <input matInput placeholder="Enter your Email address" formControlName="email" required>
+                        </mat-form-field>
+                      </div>
+                      <div class="col">
+                        <!--Password -->
+                        <mat-form-field>
+                          <mat-label>Password</mat-label>
+                          <input type="password" matInput placeholder="Set your Password" formControlName="password"
+                            required>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <mat-form-field style="width: 100%;">
+                      <mat-label>LinkedIn URL</mat-label>
+                      <input matInput placeholder="Your Linked In URL" formControlName="linkedInUrl">
+                    </mat-form-field>
+                    <div>
+                      <button mat-raised-button matStepperNext>Next</button>
+                    </div>
+                  </form>
+                </mat-step>
+
+
+                <mat-step [stepControl]="secondFormGroup">
+                  <form [formGroup]="secondFormGroup">
+                    <ng-template matStepLabel>Tell us something about your self</ng-template>
+                    <mat-form-field style="width: 100%;">
+                      <mat-label>Tell us something about your self</mat-label>
+                      <textarea rows="10" matInput
+                        placeholder="Ex. Where do study, What do you like, What kind of person are you.." required
+                        formControlName="desription"></textarea>
+                    </mat-form-field>
+                    <mat-form-field style="width: 100%;">
+                      <mat-label>Which technoloy you know good</mat-label>
+                      <input matInput placeholder="Ex. Angular, Spring boot, React, " formControlName="technology">
+                    </mat-form-field>
+                    <mat-form-field style="width: 100%;">
+                      <mat-label>Which language you know good</mat-label>
+                      <input matInput placeholder="Ex. Java, Nodejs, TypeScript" required formControlName="language">
+                    </mat-form-field>
+
+                    <div>
+                      <button mat-button matStepperPrevious>Back</button>
+                      <button mat-raised-button matStepperNext>Next</button>
+                    </div>
+
+                  </form>
+                </mat-step>
+                <mat-step  [stepControl]="thridFormGroup">
+                  <form [formGroup]="thridFormGroup">
+                  <ng-template matStepLabel>Upload Profile picture</ng-template>
+                  <div>
+                     <mat-form-field style="width: 100%;">
+                      <button type="button" mat-button color="primary" (click)="fileInput.click()">Choose File</button>
+                      <input  hidden matInput  formControlName="image">
+                    </mat-form-field> 
+                    <div>
+                      <button mat-button matStepperPrevious>Back</button>
+                      <button mat-raised-button matStepperNext>Next</button>
+                    </div>
+
+
+                  </div>
+                  </form>
+                </mat-step>
+                <mat-step>
+                  <ng-template matStepLabel>Done</ng-template>
+                  <p>You are now done.</p>
+                  <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-raised-button color="primary" (click)="submit()">Submit</button>
+
+                  </div>
+                </mat-step>
+              </mat-vertical-stepper>
+            </div>
+            <!--/card-block-->
+          </div>
+          <!-- /form card login -->
+
+        </div>
+
+
+      </div>
+      <!--/row-->
+
+    </div>
+    <!--/col-->
+  </div>
+  <!--/row-->
+</div>
+<!--/container-->
+
+
+<input hidden (change)="onFileSelected()" #fileInput type="file" id="file">
+<button type="button" mat-raised-button (click)="onUpload()">Upload the image</button>
