@@ -1,3 +1,4 @@
+import { RegisterUserService } from './register/register-user.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -40,6 +41,9 @@ import { RegisterComponent } from './register/register.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { HeaderComponent } from './header/header.component';
+import { CreateProjectComponent } from './create-project/create-project.component';
+import { MatNativeDateModule } from '@angular/material/core';
+
 
 @NgModule({
   declarations: [
@@ -48,7 +52,8 @@ import { HeaderComponent } from './header/header.component';
     RegisterComponent,
     PageNotFoundComponent,
     HomePageComponent,
-    HeaderComponent
+    HeaderComponent,
+    CreateProjectComponent
   ],
   imports: [
     BrowserModule,ReactiveFormsModule,
@@ -86,10 +91,10 @@ import { HeaderComponent } from './header/header.component';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    NgbModule,FormsModule
+    NgbModule,FormsModule,MatNativeDateModule
 
   ],
-  providers: [],
+  providers: [RegisterUserService,MatDatepickerModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

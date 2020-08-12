@@ -1,3 +1,4 @@
+import { CreateProjectComponent } from './create-project/create-project.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RegisterComponent } from './register/register.component';
@@ -12,6 +13,8 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {
     path:'register',component:RegisterComponent
+  },  {
+    path:'project',component:CreateProjectComponent
   },
   {path : '**',component:PageNotFoundComponent}
 ];

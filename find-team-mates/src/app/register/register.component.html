@@ -49,8 +49,6 @@
                     </div>
                   </form>
                 </mat-step>
-
-
                 <mat-step [stepControl]="secondFormGroup">
                   <form [formGroup]="secondFormGroup">
                     <ng-template matStepLabel>Tell us something about your self</ng-template>
@@ -95,10 +93,10 @@
                 </mat-step>
                 <mat-step>
                   <ng-template matStepLabel>Done</ng-template>
-                  <p>You are now done.</p>
+                  <p  class="alert alert-danger" *ngIf="!firstFormGroup.valid || !secondFormGroup.valid" >Plese complete all the required field</p>
+                  <p class="alert alert-success"  *ngIf="firstFormGroup.valid && secondFormGroup.valid" >You are good to go..</p>
                   <div>
-                    <button mat-button matStepperPrevious>Back</button>
-                    <button mat-raised-button color="primary" (click)="submit()">Submit</button>
+                    <button class="btn-lg btn-block" mat-raised-button color="primary" [disabled]="!firstFormGroup.valid || !secondFormGroup.valid" (click)="submit()">Submit</button>
 
                   </div>
                 </mat-step>
@@ -122,5 +120,4 @@
 <!--/container-->
 
 
-<input hidden (change)="onFileSelected()" #fileInput type="file" id="file">
-<button type="button" mat-raised-button (click)="onUpload()">Upload the image</button>
+<input hidden (change)="onFileSelected($event)" #fileInput type="file" id="file">

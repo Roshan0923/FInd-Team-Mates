@@ -1,0 +1,111 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 d-flex flex-column justify-content-center">
+      <div class="row">
+        <div class="col-lg-6 col-md-8 mx-auto">
+
+          <!-- form card Registration -->
+          <div class="card rounded shadow shadow-sm ">
+            <div class="card-header">
+              <h3 class="mb-0 text-center">Create Your Project</h3>
+            </div>
+            <div class="card-body">
+
+              <form [formGroup]="projectForm">
+                <!-- Project Title -->
+                <div>
+                  <mat-form-field style="width: 100%;">
+                    <mat-label>Project Name</mat-label>
+                    <input matInput placeholder="Enter the title of your project" formControlName="name" required>
+                  </mat-form-field>
+                </div>
+                <div>
+
+                  <mat-form-field style="width: 100%;">
+                    <mat-label>Tell us something about your Project</mat-label>
+                    <textarea rows="10" matInput
+                      placeholder="Ex. What kind of project is this?What is the idea behind the project?" required
+                      formControlName="desription"></textarea>
+                  </mat-form-field>
+                  <mat-form-field style="width: 100%;">
+                    <mat-label>About your Team-mates</mat-label>
+                    <textarea rows="5" matInput
+                      placeholder="Write somthing that you want your team mate to have (e.g. Experience in specific field)"
+                      required formControlName="requirement"></textarea>
+                  </mat-form-field>
+
+                  <mat-form-field style="width: 100%;">
+                    <mat-chip-list #chipList aria-label="Fruit selection">
+                      <mat-chip *ngFor="let front of frontEnd" [selectable]="selectable" [removable]="removable"
+                        (removed)="remove(front)">
+                        {{front.name}}
+                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                      </mat-chip>
+                      <input placeholder="Enter your expected Front-end Technology you Want to use..."
+                        [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                        [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)"
+                        formControlName="frontEnd">
+                    </mat-chip-list>
+                  </mat-form-field>
+
+                  <mat-form-field style="width: 100%;">
+                    <mat-chip-list #chipListB aria-label="Back-end selection">
+                      <mat-chip *ngFor="let front of backEnd" [selectable]="selectableB" [removable]="removableB"
+                        (removed)="removebackEnd(front)">
+                        {{front.name}}
+                        <mat-icon matChipRemove *ngIf="removableB">cancel</mat-icon>
+                      </mat-chip>
+                      <input placeholder="Enter your expected Back-end Technology you Want to use..."
+                        [matChipInputFor]="chipListB" [matChipInputSeparatorKeyCodes]="separatorKeysCodesB"
+                        [matChipInputAddOnBlur]="addOnBlurB" (matChipInputTokenEnd)="addBackEnd($event)"
+                        formControlName="backEnd">
+                    </mat-chip-list>
+                  </mat-form-field>
+
+                  <!-- <mat-form-field appearance="fill">
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput [matDatepicker]="picker">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field> -->
+
+                </div>
+                <div class="row">
+                  <div class="col">
+
+                    <mat-form-field>
+                      <mat-label>Expected project completion date</mat-label>
+                      <input matInput [matDatepicker]="picker" formControlName="date">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                  <div class="col">
+                    <mat-form-field>
+                      <mat-label>Type of project</mat-label>
+                      <input matInput placeholder="Ex. Android application,Website" formControlName="type" required>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <button class="btn-lg btn-block" mat-raised-button color="primary" [disabled]="!projectForm.valid"
+                  (click)="submit()">Submit</button>
+
+              </form>
+
+            </div>
+            <!--/card-block-->
+          </div>
+          <!-- /form card login -->
+
+        </div>
+
+
+      </div>
+      <!--/row-->
+
+    </div>
+    <!--/col-->
+  </div>
+  <!--/row-->
+</div>
+<!--/container-->

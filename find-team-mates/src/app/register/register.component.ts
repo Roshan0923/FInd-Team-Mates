@@ -1,3 +1,5 @@
+import { register_user } from './register_user';
+import { RegisterUserService } from './register-user.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -11,8 +13,10 @@ import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
   }]
 })
 export class RegisterComponent implements OnInit {
-
-  constructor(private httpClient: HttpClient,private _formBuilder: FormBuilder) { }
+ public obj:register_user
+  constructor(private service:RegisterUserService,private httpClient: HttpClient,private _formBuilder: FormBuilder) {
+    this.obj=new register_user();
+   }
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   thridFormGroup :FormGroup
@@ -35,24 +39,41 @@ export class RegisterComponent implements OnInit {
 
   submit()
   {
-    console.log(this.firstFormGroup);
-    console.log(this.secondFormGroup);
-  
+  this.obj.name= this.firstFormGroup.value.name;
+  this.obj.email= this.firstFormGroup.value.email;
+  this.obj.password= this.firstFormGroup.value.password;
+  this.obj.linkedIn_url= this.firstFormGroup.value.linkedInUrl;
+  this.obj.description= this.secondFormGroup.value.desription;
+  this.obj.technology= this.secondFormGroup.value.technology;
+  this.obj.language= this.secondFormGroup.value.language;
+  this.obj.file=this.selectedFile;
+  const uploadImageData = new FormData();
+  uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
+  console.log(uploadImageData)
+  //this.obj.file=uploadImageData;
+ // console.log(this.obj)
+ console.log("BElow is from obj")
+    console.log(uploadImageData);
+
+    this.service.registerUser(this.obj);
   }
 
-  onFileSelected() {
+  onFileSelected(event) {
     const inputNode: any = document.querySelector('#file');
   
-    this.selectedFile = inputNode.files[0];
+    //this.selectedFile = inputNode.files[0];
+    this.selectedFile=event.target.files[0];
     console.log(this.selectedFile)
+  //  this.onUpload();
   }
 
   onUpload() {
-    console.log(this.selectedFile);
-    
+ //   console.log(this.selectedFile);
+    console.log("upload method called")
     //FormData API provides methods and properties to allow us easily prepare form data to be sent with POST HTTP requests.
     const uploadImageData = new FormData();
     uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
+    console.log(typeof(uploadImageData));
   console.log(uploadImageData)
     // //Make a call to the Spring Boot Application to save the image
     // this.httpClient.post('http://localhost:8080/image/upload', uploadImageData, { observe: 'response' })
@@ -65,4 +86,6 @@ export class RegisterComponent implements OnInit {
     //   }
     //   );
      }
+
+     
 }
