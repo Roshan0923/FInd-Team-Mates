@@ -1,3 +1,4 @@
+import { UpdateProjectDetailsComponent } from './update-project-details/update-project-details.component';
 import { CreateProjectComponent } from './create-project/create-project.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -5,6 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { UpdateProjectComponent } from './update-project/update-project.component';
 
 
 const routes: Routes = [
@@ -15,6 +17,12 @@ const routes: Routes = [
     path:'register',component:RegisterComponent
   },  {
     path:'project',component:CreateProjectComponent
+  },
+  {
+    path:'projectById',component:UpdateProjectComponent
+  },
+  {
+    path:'updateProjectDetails',component:UpdateProjectDetailsComponent
   },
   {path : '**',component:PageNotFoundComponent}
 ];

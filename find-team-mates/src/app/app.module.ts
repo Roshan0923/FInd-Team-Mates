@@ -43,6 +43,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { HeaderComponent } from './header/header.component';
 import { CreateProjectComponent } from './create-project/create-project.component';
 import { MatNativeDateModule } from '@angular/material/core';
+import { UpdateProjectComponent } from './update-project/update-project.component';
+import { UpdateProjectDetailsComponent } from './update-project-details/update-project-details.component';
 
 
 @NgModule({
@@ -53,7 +55,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     PageNotFoundComponent,
     HomePageComponent,
     HeaderComponent,
-    CreateProjectComponent
+    CreateProjectComponent,
+    UpdateProjectComponent,
+    UpdateProjectDetailsComponent
   ],
   imports: [
     BrowserModule,ReactiveFormsModule,

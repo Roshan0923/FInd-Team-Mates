@@ -1,3 +1,4 @@
+import { CreateProjectService } from './create-project.service';
 import { project_model } from './project_model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -46,7 +47,7 @@ export class CreateProjectComponent implements OnInit {
   ];
 
 
-  constructor(private httpClient: HttpClient,private _formBuilder: FormBuilder) {
+  constructor(private httpClient: HttpClient,private _formBuilder: FormBuilder,private service:CreateProjectService) {
     this.obj=new project_model();
    }
 
@@ -142,7 +143,9 @@ backEndData=""
      this.obj.front_end=this.frontEndData;
       this.obj.user_id=this.user_id;
       console.log(this.obj)
+      this.service.create_project(this.obj);
 
   }
+
 
 }

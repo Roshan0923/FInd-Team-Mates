@@ -7,5 +7,6 @@ export class project_model
     front_end:string;
     back_end:string;
     type:string;
-    user_id:number
+    user_id:number;
+  
 }

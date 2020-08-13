@@ -1,0 +1,19 @@
+
+<div class="container">
+<h1 class="display-2">Your Created projects</h1>
+<div class="card" *ngFor="let data of project_data" style="margin-top: 20px;">
+    <h3 class="card-header" style="background-color:#adb8ae;"><b>{{data.project_name}}</b></h3>
+    <div class="card-body">
+        <p><b>Project Description</b></p>
+      <p class="card-text">{{data.project_description}}</p>
+      <p><b>Expected project deadine</b></p>
+      <p>{{data.deadline}}</p>
+
+      <div style="float: right;" >
+      <button mat-raised-button (click)="onClickTOProjectDetails(data)" color="primary" style="margin-right: 15px;">Edit Details</button>
+      <button mat-button color="warn" (click)="onClickToDeletProject(data)">Delete Project</button>
+      </div>
+
+    </div>
+  </div>
+</div>
