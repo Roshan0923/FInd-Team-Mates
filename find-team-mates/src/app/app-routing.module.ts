@@ -1,3 +1,5 @@
+import { PendingInvitationComponent } from './pending-invitation/pending-invitation.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ProjectDetailWithUserInfoComponent } from './project-detail-with-user-info/project-detail-with-user-info.component';
 import { AllProjectsComponent } from './all-projects/all-projects.component';
 import { UpdateProjectDetailsComponent } from './update-project-details/update-project-details.component';
@@ -32,7 +34,12 @@ const routes: Routes = [
   {
     path:'projectDetail/:user_id',component:ProjectDetailWithUserInfoComponent
   },
-
+  {
+    path:'profile/:req_user_id',component:UserProfileComponent
+  },
+  {
+    path:'request',component:PendingInvitationComponent
+  },
   {path : '**',component:PageNotFoundComponent}
 ];
 

@@ -48,6 +48,8 @@ import { UpdateProjectDetailsComponent } from './update-project-details/update-p
 import { AllProjectsComponent } from './all-projects/all-projects.component';
 import { ProjectDetailWithUserInfoComponent } from './project-detail-with-user-info/project-detail-with-user-info.component';
 import { DialogJoinGroupComponent } from './dialog-join-group/dialog-join-group.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { PendingInvitationComponent } from './pending-invitation/pending-invitation.component';
 
 
 @NgModule({
@@ -63,7 +65,9 @@ import { DialogJoinGroupComponent } from './dialog-join-group/dialog-join-group.
     UpdateProjectDetailsComponent,
     AllProjectsComponent,
     ProjectDetailWithUserInfoComponent,
-    DialogJoinGroupComponent
+    DialogJoinGroupComponent,
+    UserProfileComponent,
+    PendingInvitationComponent
   ],
   imports: [
     BrowserModule,ReactiveFormsModule,

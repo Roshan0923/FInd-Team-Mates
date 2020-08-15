@@ -9,10 +9,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./update-project.component.css']
 })
 export class UpdateProjectComponent implements OnInit {
-
+  user_id=1;
 
   project_data:any;
-  user_id=8;
+
   constructor(private service:UpdateProjectService,private userDataService :StoreUserSelectedDataService,private router:Router) { }
 
   ngOnInit(): void {

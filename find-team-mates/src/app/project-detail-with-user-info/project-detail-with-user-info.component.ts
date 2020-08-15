@@ -36,11 +36,11 @@ current_logged_in_user_id=5;
   }
 
   getUSerInfo(user_id: any) {
-    var blog: any = [];
+    var user_info: any = [];
   this.service.getUserCreatedProjects(user_id).subscribe(data => {
       let temp = data['image'];
       data['image'] = 'data:image/jpeg;base64,' + temp;
-      blog.push(data);
+      user_info.push(data);
       
     var tech_slpit=this.user_data[0].technology.split(',');
     this.technology=tech_slpit;
@@ -50,7 +50,7 @@ current_logged_in_user_id=5;
    
       
     });
-      return blog;
+      return user_info;
   }
 
 
