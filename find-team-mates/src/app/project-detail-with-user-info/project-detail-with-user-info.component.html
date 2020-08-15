@@ -1,0 +1,78 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+    integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+<div class="container">
+    <div class="team-single">
+        <div class="row">
+            <div class="col-lg-4 col-md-5 xs-margin-30px-bottom">
+                <div class="team-single-img" style="text-align: center;">
+                    <img [src]=user_data[0].image alt="" width="250" height="250">
+                </div>
+                <div class="bg-light-gray padding-30px-all md-padding-25px-all sm-padding-20px-all">
+                    <div class="text-center">
+                        <p class="h4 margin-10px-bottom">{{user_data[0].name}}</p>
+                    </div>
+                    <p class="h6 sm-margin-auto">Technology Knows
+
+                        <mat-chip-list aria-label="Fish selection">
+                            <mat-chip *ngFor="let data of technology">{{data}}</mat-chip>
+                        </mat-chip-list>
+
+                    </p>
+                    <p class="h6 sm-width-95 sm-margin-auto">Language knows
+
+                        <mat-chip-list aria-label="Fish selection">
+                            <mat-chip *ngFor="let data of languale">{{data}}</mat-chip>
+                        </mat-chip-list>
+
+                    </p>
+                    <hr class="dashed">
+                    <div class="margin-20px-top team-single-icons">
+                        <ul class="">
+                            <p class="h6 ">Visit My LinkedIn
+                                <li><a [href]="user_data[0].linkedIn_url"><i class="fab fa-linkedin-in"></i></a></li>
+                            </p>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8 col-md-7">
+                <div class="team-single-text padding-50px-left sm-no-padding-left">
+                    <h4 class="font-size38 sm-font-size32 xs-font-size30">{{project_data.project_name}}</h4>
+                    <p class="h6 lead" style="margin-top: 50px;">Project Desctription</p>
+                    <p class="no-margin-bottom">{{project_data.project_description}}</p>
+
+                    <p class="h6 lead">Team Mate Desctription</p>
+                    <p class="no-margin-bottom">{{project_data.team_mate_desctiption}}</p>
+                    <div class="contact-info-section margin-40px-tb">
+
+
+                        <p class="h6 lead">Expected Front-End technology</p>
+                        <p class="no-margin-bottom">
+                            <mat-chip-list aria-label="Fish selection">
+                                <mat-chip *ngFor="let data of project_data.front_end.split(',')">{{data}}</mat-chip>
+                            </mat-chip-list>
+
+                        </p>
+
+                        <p class="h6 lead">Expected Back-End technology</p>
+                        <p class="no-margin-bottom">
+                            <mat-chip-list aria-label="Fish selection">
+                                <mat-chip *ngFor="let data of project_data.back_end.split(',')">{{data}}</mat-chip>
+                            </mat-chip-list>
+                        </p>
+
+                        <p class="h6 ">Type of project</p>
+                        <p class="no-margin-bottom">{{project_data.type}}</p>
+                        
+                        <p class="h6 ">Expected Deadline</p>
+                        <p class="no-margin-bottom">{{project_data.deadline| date:'yyyy-MM-dd'}}</p>
+                        <button (click)="openDialog()" mat-raised-button color="primary">Request To join the project</button>
+                </div>
+
+                <div class="col-md-12">
+
+                </div>
+            </div>
+        </div>
+    </div>

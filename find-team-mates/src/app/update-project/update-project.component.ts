@@ -12,7 +12,7 @@ export class UpdateProjectComponent implements OnInit {
 
 
   project_data:any;
-  user_id=1;
+  user_id=8;
   constructor(private service:UpdateProjectService,private userDataService :StoreUserSelectedDataService,private router:Router) { }
 
   ngOnInit(): void {

@@ -45,6 +45,9 @@ import { CreateProjectComponent } from './create-project/create-project.componen
 import { MatNativeDateModule } from '@angular/material/core';
 import { UpdateProjectComponent } from './update-project/update-project.component';
 import { UpdateProjectDetailsComponent } from './update-project-details/update-project-details.component';
+import { AllProjectsComponent } from './all-projects/all-projects.component';
+import { ProjectDetailWithUserInfoComponent } from './project-detail-with-user-info/project-detail-with-user-info.component';
+import { DialogJoinGroupComponent } from './dialog-join-group/dialog-join-group.component';
 
 
 @NgModule({
@@ -57,7 +60,10 @@ import { UpdateProjectDetailsComponent } from './update-project-details/update-p
     HeaderComponent,
     CreateProjectComponent,
     UpdateProjectComponent,
-    UpdateProjectDetailsComponent
+    UpdateProjectDetailsComponent,
+    AllProjectsComponent,
+    ProjectDetailWithUserInfoComponent,
+    DialogJoinGroupComponent
   ],
   imports: [
     BrowserModule,ReactiveFormsModule,
@@ -98,6 +104,7 @@ import { UpdateProjectDetailsComponent } from './update-project-details/update-p
     NgbModule,FormsModule,MatNativeDateModule
 
   ],
+  entryComponents:[DialogJoinGroupComponent],
   providers: [RegisterUserService,MatDatepickerModule],
   bootstrap: [AppComponent]
 })

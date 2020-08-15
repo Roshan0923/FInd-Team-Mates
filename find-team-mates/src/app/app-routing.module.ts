@@ -1,3 +1,5 @@
+import { ProjectDetailWithUserInfoComponent } from './project-detail-with-user-info/project-detail-with-user-info.component';
+import { AllProjectsComponent } from './all-projects/all-projects.component';
 import { UpdateProjectDetailsComponent } from './update-project-details/update-project-details.component';
 import { CreateProjectComponent } from './create-project/create-project.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -24,6 +26,13 @@ const routes: Routes = [
   {
     path:'updateProjectDetails',component:UpdateProjectDetailsComponent
   },
+  {
+    path:'allProjects',component:AllProjectsComponent
+  },
+  {
+    path:'projectDetail/:user_id',component:ProjectDetailWithUserInfoComponent
+  },
+
   {path : '**',component:PageNotFoundComponent}
 ];
 

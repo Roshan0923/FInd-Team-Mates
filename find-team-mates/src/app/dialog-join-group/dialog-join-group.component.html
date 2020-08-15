@@ -1,0 +1,12 @@
+
+<div mat-dialog-content>
+  <p>Write something....</p>
+  <mat-form-field>
+    <mat-label>Why do want to join the team?</mat-label>
+    <input matInput [(ngModel)]="data.animal" required>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close="false">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+</div>
