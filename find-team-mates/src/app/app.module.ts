@@ -52,6 +52,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { PendingInvitationComponent } from './pending-invitation/pending-invitation.component';
 import { AuthGuard } from './auth.guard';
 import { TokenIntercepterService } from './token-intercepter.service';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
 
 
 @NgModule({
@@ -69,7 +70,8 @@ import { TokenIntercepterService } from './token-intercepter.service';
     ProjectDetailWithUserInfoComponent,
     DialogJoinGroupComponent,
     UserProfileComponent,
-    PendingInvitationComponent
+    PendingInvitationComponent,
+    UpdateProfileComponent
   ],
   imports: [
     BrowserModule,ReactiveFormsModule,

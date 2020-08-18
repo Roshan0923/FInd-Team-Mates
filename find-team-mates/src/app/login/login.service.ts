@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { tap, catchError, map } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,17 +17,25 @@ export class LoginService {
       "emailid":email,
       "password":password
     }
- return this.http.post(this.url+"authenticate",data,{responseType:'text' as 'json'});
+ return this.http.post(this.url+"authenticate",data).pipe(
+  tap(data => data), catchError(this.handleError)
+);
   }
   
+  
+  private handleError(error: any) {
+    console.log("error occure")
+    return "D";
+  };
+
 
   loggedIn()
   {
-    return !!localStorage.getItem('token');
+    return !!sessionStorage.getItem('token');
   }
 
   getTokenFromLocal()
   {
-    return localStorage.getItem('token');
+    return sessionStorage.getItem('token');
   }
 }

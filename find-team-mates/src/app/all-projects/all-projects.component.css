@@ -1,0 +1,12 @@
+.btn-grad {background-image: linear-gradient(to right, #A770EF 0%, #CF8BF3 51%, #A770EF 100%);
+color: white;
+
+}
+.btn-grad:hover
+ {
+     border:1px solid lightgray;
+      background-position: right center; }
+.header{
+    display: flex;
+    justify-content: space-between;
+}

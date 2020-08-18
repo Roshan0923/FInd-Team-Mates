@@ -2,6 +2,7 @@ import { register_user } from './register_user';
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -33,6 +34,6 @@ export class RegisterUserService {
     console.log("calling service")
    // this.http.get(this.url).subscribe(value => value);;
     // console.log(obj);
-     this.http.post(this.url+"register",formdata).subscribe(value => value);
+    return this.http.post(this.url+"register",formdata);
   }
 }

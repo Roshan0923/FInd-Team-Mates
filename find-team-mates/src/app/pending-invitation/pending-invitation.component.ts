@@ -10,7 +10,8 @@ import { Router } from '@angular/router';
 export class PendingInvitationComponent implements OnInit {
 
   constructor(private service:GetPendingRequestService,private router:Router) { }
-  user_id=1;
+  //User id is stored here
+  user_id=sessionStorage.getItem('ID');
   project_data:any
   ngOnInit(): void {
    this.service.getPendingRequest(this.user_id).subscribe(data=>{

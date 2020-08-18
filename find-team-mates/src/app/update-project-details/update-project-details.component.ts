@@ -24,7 +24,7 @@ export interface backEnd{
 })
 export class UpdateProjectDetailsComponent implements OnInit {
 
-  user_id=1;
+  user_id=+sessionStorage.getItem('ID');
   data:any;
   public obj:project_model;
   constructor(private updateService:CreateProjectService,private router:Router,private userDataService:StoreUserSelectedDataService,private _formBuilder: FormBuilder,private service:UpdateProjectService) { 

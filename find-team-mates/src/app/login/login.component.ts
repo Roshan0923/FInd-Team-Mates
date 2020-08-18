@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { LoginService } from './login.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   message:any
   email:any;
   password:any
-  constructor(private service:LoginService) { }
+  constructor(private service:LoginService,private route:Router) { }
 
   ngOnInit(): void {
   }
@@ -22,8 +23,20 @@ export class LoginComponent implements OnInit {
   {
     console.log("calling get token method");
     this.service.getToken(this.email,this.password).subscribe(data=>{
+  
       console.log(data);
-       localStorage.setItem('token',data.toString());
+      if(data['user_id'])
+      {
+        this.message="Success";
+        sessionStorage.setItem('token',data['token']);
+        sessionStorage.setItem('ID',data['user_id']);
+        this.route.navigate(['/allProjects']);
+      }
+      else
+      {
+        this.message="Please enter valid credentails";
+      }
+     
     })
   }
 

@@ -1,5 +1,9 @@
 <div class="container">
-    <h1 class="display-2">Your Created projects</h1>
+  <div class="header">
+    <h1 class="display-2">List Of all the projects</h1>
+  <button  class="btn btn-grad mb-2 rounded-pill shadow-sm" (click)=createOwnProject()>Create Your Own project</button>
+   
+  </div>
     <div class="card" *ngFor="let data of Allproject" style="margin-top: 20px;">
         <h3 class="card-header" style="background-color:#adb8ae;"><b>{{data.project_name}}</b></h3>
         <div class="card-body">

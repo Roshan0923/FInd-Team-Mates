@@ -8,8 +8,10 @@ import { Router } from '@angular/router';
   templateUrl: './update-project.component.html',
   styleUrls: ['./update-project.component.css']
 })
+
+//When the user is logged in and the user wants access his created projects
 export class UpdateProjectComponent implements OnInit {
-  user_id=1;
+  user_id=+sessionStorage.getItem('ID');
 
   project_data:any;
 
@@ -22,15 +24,19 @@ export class UpdateProjectComponent implements OnInit {
 //Method to get the projec by USER_ID (using service)
   getProjectContentByUserId(user_id:number)
   {
+    console.log("gettong data of the "+user_id);
     this.service.getUserCreatedProjects(user_id).subscribe(data=>{
       this.project_data=data;
-      
+      console.log("initial")
+      console.log(this.project_data);
     });
   }
 
   
   onClickTOProjectDetails(data:any)
   {
+    console.log("on click to project detail")
+    console.log(data)
     //Stroring the user selected project in a service
    this.userDataService.saveUserData(data);
    //Navigating the user to user-selected-project component.

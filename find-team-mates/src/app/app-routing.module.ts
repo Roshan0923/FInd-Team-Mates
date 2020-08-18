@@ -1,3 +1,4 @@
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { PendingInvitationComponent } from './pending-invitation/pending-invitation.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ProjectDetailWithUserInfoComponent } from './project-detail-with-user-info/project-detail-with-user-info.component';
@@ -37,6 +38,9 @@ const routes: Routes = [
   },
   {
     path:'profile/:req_user_id',component:UserProfileComponent,canActivate:[AuthGuard]
+  },
+  {
+    path:'updateProfile',component:UpdateProfileComponent,canActivate:[AuthGuard]
   },
   {
     path:'request',component:PendingInvitationComponent,canActivate:[AuthGuard]

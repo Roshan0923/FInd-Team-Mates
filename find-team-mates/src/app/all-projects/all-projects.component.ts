@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AllProjectsComponent implements OnInit {
 
-  user_id=8;
+  user_id=sessionStorage.getItem('ID');
   Allproject:any;
   constructor(private service:GetAllProjectsService,private router:Router) { }
 
@@ -19,20 +19,30 @@ export class AllProjectsComponent implements OnInit {
      
   }
 
+
+  //Method will be called when the user wants to see all the project from the database.
   getAllData()
   {
-    this.service.getUserCreatedProjects().subscribe(data=>
+    this.service.getAllProjects().subscribe(data=>
       {
           this.Allproject=data;
           console.log(this.Allproject)
       })
   }
 
+  //Method will be caled when the user want to see any project in details
   getDetailedProject(data:any)
   {
    this.service.saveProjectInfo(data);
 
    this.router.navigate(['/projectDetail',this.user_id]);
+  }
+
+
+  //Will be called when the user wants to creates a new project
+  createOwnProject()
+  {
+    this.router.navigate(['/project']);
   }
 
 

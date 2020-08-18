@@ -22,7 +22,7 @@ export interface backEnd{
 export class CreateProjectComponent implements OnInit {
 
   //TO BE CHNAGE USER_ID
-  user_id=1;
+  user_id:number=+sessionStorage.getItem('ID');
  public obj:project_model;
   visible = true;
   selectable = true;
@@ -31,6 +31,8 @@ export class CreateProjectComponent implements OnInit {
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   readonly separatorKeysCodesB: number[] = [ENTER, COMMA];
 
+
+  messageData:any;
   visibleB = true;
   selectableB = true;
   removableB = true;
@@ -143,7 +145,20 @@ backEndData=""
      this.obj.front_end=this.frontEndData;
       this.obj.user_id=this.user_id;
       console.log(this.obj)
-      this.service.create_project(this.obj);
+      this.service.create_project(this.obj).subscribe((data)=>{
+
+      },
+      (error)=>{
+          if(error.status==200)
+          {
+              this.messageData="Successfully created the project"
+          }
+          else
+          {
+            this.messageData="Error";
+          }
+          
+      });
 
   }
 

@@ -12,14 +12,8 @@ export class GetAllProjectsService {
 
   url="http://localhost:8080/allProject/"
   constructor(private http: HttpClient,private _token:LoginService) { }
-  getUserCreatedProjects()
+  getAllProjects()
   {
-  
-    // let headers = new HttpHeaders()
-    // headers.append('Authorization',`Bearer `)
-    // headers.set('Content-Type', 'application/json');
-    // let options = {headers:HttpHeaders};
-
     const httpOptions = {
       headers: new HttpHeaders({      
         'Authorization': `Bearer ${this._token.getTokenFromLocal()}` 

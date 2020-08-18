@@ -13,7 +13,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class ProjectDetailWithUserInfoComponent implements OnInit {
 
-current_logged_in_user_id=5;
+current_logged_in_user_id=+sessionStorage.getItem('ID');
   user_request_message:any
   project_data: any
   user_data: any[];
@@ -27,17 +27,22 @@ current_logged_in_user_id=5;
 
 
   ngOnInit(): void {
+    //Getting the user_id of the user who created the project(WHich is selected by the current logged in user)
     let user_id = parseInt(this.route.snapshot.paramMap.get('user_id'));
+    //Method is called to get the user_ddetail who created the project
    this.user_data= this.getUSerInfo(user_id);
+   //Method is called to get the project detail(Which is selected by the current logged in user to see the details)
     this.project_data = this.projectInfoservice.retriveProjectInfo();
-    console.log(this.project_data)
+    //console.log(this.project_data)
 
    //  console.log(this.user_data);
   }
 
+
+  //This method is called to get the user detail who created the project.
   getUSerInfo(user_id: any) {
     var user_info: any = [];
-  this.service.getUserCreatedProjects(user_id).subscribe(data => {
+  this.service.getUserInfo(user_id).subscribe(data => {
       let temp = data['image'];
       data['image'] = 'data:image/jpeg;base64,' + temp;
       user_info.push(data);
@@ -46,8 +51,6 @@ current_logged_in_user_id=5;
     this.technology=tech_slpit;
     var language=this.user_data[0].language.split(',');
     this.languale=language;
-  
-   
       
     });
       return user_info;
@@ -58,7 +61,7 @@ current_logged_in_user_id=5;
   name: string;
   openDialog()
   {
-   let dialogRef= this.dialog.open(DialogJoinGroupComponent,{ width: '350px',height:'200px',
+   let dialogRef= this.dialog.open(DialogJoinGroupComponent,{ width: '250px',
    data: {name: this.name, animal: this.animal}});
    dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');

@@ -13,6 +13,8 @@ import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
   }]
 })
 export class RegisterComponent implements OnInit {
+
+  messageData:any;
  public obj:register_user
   constructor(private service:RegisterUserService,private httpClient: HttpClient,private _formBuilder: FormBuilder) {
     this.obj=new register_user();
@@ -55,7 +57,32 @@ export class RegisterComponent implements OnInit {
  console.log("BElow is from obj")
     console.log(uploadImageData);
 
-    this.service.registerUser(this.obj);
+    this.service.registerUser(this.obj).subscribe((data) =>{
+      
+     this.messageData="SuccessFully Registered"
+     },
+     (error)=>{
+
+       console.log(error);
+       if(error.status==200)
+       {
+         this.messageData="Succussfull registration"
+       }
+      else if(error.status==500)
+       {
+         this.messageData="server error"
+       }
+     else  if(error.status==409)
+       {
+         this.messageData="Email-id already exist in the DB"
+       }
+       else
+       {
+         this.messageData="Error Occured"
+       }
+    
+   } 
+    );
   }
 
   onFileSelected(event) {
@@ -75,16 +102,7 @@ export class RegisterComponent implements OnInit {
     uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
     console.log(typeof(uploadImageData));
   console.log(uploadImageData)
-    // //Make a call to the Spring Boot Application to save the image
-    // this.httpClient.post('http://localhost:8080/image/upload', uploadImageData, { observe: 'response' })
-    //   .subscribe((response) => {
-    //     if (response.status === 200) {
-    //       this.message = 'Image uploaded successfully';
-    //     } else {
-    //       this.message = 'Image not uploaded successfully';
-    //     }
-    //   }
-    //   );
+
      }
 
      

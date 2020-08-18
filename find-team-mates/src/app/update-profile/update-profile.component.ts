@@ -1,24 +1,25 @@
 import { ProjectDetailWithUserService } from './../project-detail-with-user-info/project-detail-with-user.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-user-profile',
-  templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.css']
+  selector: 'app-update-profile',
+  templateUrl: './update-profile.component.html',
+  styleUrls: ['./update-profile.component.css']
 })
-export class UserProfileComponent implements OnInit {
+export class UpdateProfileComponent implements OnInit {
 
-  user_id:number;
+
+  user_id=sessionStorage.getItem('ID');
   user_data: any[];
   technology:any[];
   languale:any[];
-  constructor(private service:ProjectDetailWithUserService,private route: ActivatedRoute) { }
+
+  constructor(private service:ProjectDetailWithUserService) { }
 
   ngOnInit(): void {
-    this.user_id = parseInt(this.route.snapshot.paramMap.get('req_user_id'));
-    this.user_data= this.getUSerInfo(this.user_id);
+    this.user_data=  this.getUSerInfo(this.user_id);
     console.log(this.user_data);
+
   }
 
   getUSerInfo(user_id: any) {
@@ -35,4 +36,5 @@ export class UserProfileComponent implements OnInit {
     });
       return user_info;
   }
+
 }
