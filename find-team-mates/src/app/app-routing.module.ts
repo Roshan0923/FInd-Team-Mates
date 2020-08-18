@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UpdateProjectComponent } from './update-project/update-project.component';
+import { AuthGuard } from './auth.guard';
 
 
 const routes: Routes = [
@@ -20,25 +21,25 @@ const routes: Routes = [
   {
     path:'register',component:RegisterComponent
   },  {
-    path:'project',component:CreateProjectComponent
+    path:'project',component:CreateProjectComponent,canActivate:[AuthGuard]
   },
   {
-    path:'projectById',component:UpdateProjectComponent
+    path:'projectById',component:UpdateProjectComponent,canActivate:[AuthGuard]
   },
   {
-    path:'updateProjectDetails',component:UpdateProjectDetailsComponent
+    path:'updateProjectDetails',component:UpdateProjectDetailsComponent,canActivate:[AuthGuard]
   },
   {
-    path:'allProjects',component:AllProjectsComponent
+    path:'allProjects',component:AllProjectsComponent,canActivate:[AuthGuard]
   },
   {
-    path:'projectDetail/:user_id',component:ProjectDetailWithUserInfoComponent
+    path:'projectDetail/:user_id',component:ProjectDetailWithUserInfoComponent,canActivate:[AuthGuard]
   },
   {
-    path:'profile/:req_user_id',component:UserProfileComponent
+    path:'profile/:req_user_id',component:UserProfileComponent,canActivate:[AuthGuard]
   },
   {
-    path:'request',component:PendingInvitationComponent
+    path:'request',component:PendingInvitationComponent,canActivate:[AuthGuard]
   },
   {path : '**',component:PageNotFoundComponent}
 ];

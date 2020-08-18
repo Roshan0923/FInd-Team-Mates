@@ -1,0 +1,15 @@
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+<style>
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+
+primary colot #1abc9c
+Secondary color #2c3e50
+
+
+for multi level drop down
+https://bootstrapious.com/snippets
+
+
+
+For the bootstrap reference
+https://medialoot.com/blog/how-to-code-a-homepage-template-with-html5-and-css3/

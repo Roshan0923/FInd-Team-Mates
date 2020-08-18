@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {  HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpInterceptor } from '@angular/common/http';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
@@ -50,6 +50,8 @@ import { ProjectDetailWithUserInfoComponent } from './project-detail-with-user-i
 import { DialogJoinGroupComponent } from './dialog-join-group/dialog-join-group.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { PendingInvitationComponent } from './pending-invitation/pending-invitation.component';
+import { AuthGuard } from './auth.guard';
+import { TokenIntercepterService } from './token-intercepter.service';
 
 
 @NgModule({
@@ -109,7 +111,14 @@ import { PendingInvitationComponent } from './pending-invitation/pending-invitat
 
   ],
   entryComponents:[DialogJoinGroupComponent],
-  providers: [RegisterUserService,MatDatepickerModule],
+  providers: [RegisterUserService,MatDatepickerModule,AuthGuard,
+  // {
+  //   provide:HTTP_INTERCEPTORS,
+  //   useClass:TokenIntercepterService,
+  //   multi:true
+  // }
+  
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
