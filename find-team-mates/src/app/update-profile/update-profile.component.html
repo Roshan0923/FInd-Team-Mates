@@ -1,66 +1,84 @@
-<div class="container bootstrap snippets bootdey">
+<div class="container">
     <h1 class="text-primary"><span class="glyphicon glyphicon-user"></span>Edit Profile</h1>
     <hr>
     <div class="row">
-        <!-- left column -->
-        <div class="col-md-3">
-            <div class="text-center">
-                <img [src]=user_data[0].image alt="" width="250" height="250" style="max-height: 400px;" class="avatar img-circle" alt="avatar">
-                <h6>Upload a different photo...</h6>
+        <div class="col-md-12 min-vh-100 d-flex flex-column justify-content-center">
+            <div class="row">
+                <div class="col-lg-9 col-md-8 mx-auto">
+                    <form class="form-horizontal" role="form" #userForm="ngForm">
+                        <div class="form-group">
+                            <div>
+                                <img [src]="user_data[0].image" name="image" height="250px" width="250px"
+                                    style="max-height: 250px;">
+                            </div>
+                            <div>
+                                <button type="button" mat-button color="primary" (click)="fileInput.click()">Choose
+                                    File</button>
+                                <input hidden matInput name="image" [(ngModel)]="user_data[0].image">
+                                <input hidden (change)="onFileSelected($event)" #fileInput type="file" id="file">
+                            </div>
+                        </div>
 
-                <input type="file" class="form-control">
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Name:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" #name=ngModel [class.is-invalid]="name.invalid" name="name"
+                                    [(ngModel)]="user_data[0].name" type="text" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Email-Id:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" type="email" name="email" [ngModel]="user_data[0].email"
+                                    disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">About Yourself:</label>
+                            <div class="col-lg-8">
+                                <textarea class="form-control" #description=ngModel
+                                    [class.is-invalid]="description.invalid" type="text" name="description"
+                                    [ngModel]="user_data[0].description" required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Your Known Language:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" #language=ngModel [class.is-invalid]="language.invalid"
+                                    type="text" name="language" [ngModel]="user_data[0].language" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Your Known Technology:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" type="text" name="technology"
+                                    [ngModel]="user_data[0].technology" required>
+                                <small class="text-muted">
+                                    Must be minimum 10 digits long.
+                                </small>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Your LinkedIn:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" #linkedIn_url=ngModel
+                                    [class.is-invalid]="linkedIn_url.invalid" type="text" name="linkedIn_url"
+                                    [ngModel]="user_data[0].linkedIn_url" required>
+                                <small class="text-danger" [class.d-none]="linkedIn_url.valid">Linked URL is
+                                    mandatory</small>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button [disabled]="userForm.form.invalid" type="submit"
+                                (click)=saveUpdatedUserInfo(userForm) class="btn btn-outline-primary">submit</button>
+                        </div>
+
+
+                    </form>
+                </div>
+                </div>
+                </div>
             </div>
         </div>
-
-        <!-- edit form column -->
-        <div class="col-md-9 personal-info">
-            
-            <h3>Personal info</h3>
-
-            <form class="form-horizontal" role="form">
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">Name:</label>
-                    <div class="col-lg-8">
-                        <input class="form-control" [(value)]="user_data[0].name" type="text">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">Email-Id:</label>
-                    <div class="col-lg-8">
-                        <input class="form-control" type="text" [(value)]="user_data[0].email" disabled >
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">About Yourself:</label>
-                    <div class="col-lg-8">
-                        <textarea class="form-control" type="text" [(value)]="user_data[0].description" ></textarea>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">Your Known Language:</label>
-                    <div class="col-lg-8">
-                        <input class="form-control" type="text" [(value)]="user_data[0].language">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">Your Known Technology:</label>
-                    <div class="col-lg-8">
-                        <input class="form-control" type="text" [(value)]="user_data[0].technology">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">Your LinkedIn:</label>
-                    <div class="col-lg-8">
-                        <input class="form-control" type="text" [(value)]="user_data[0].linkedIn_url">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-outline-primary">submit</button>
-                </div>
-
-               
-            </form>
-        </div>
-    </div>
-</div>
-<hr>
+        <hr>

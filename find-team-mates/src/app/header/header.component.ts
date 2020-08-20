@@ -1,3 +1,4 @@
+import { LoginService } from './../login/login.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+
+  isloggedin:boolean;
+  constructor(private service:LoginService) { }
 
   ngOnInit(): void {
+    this.isloggedin= this.service.loggedIn();
+
   }
 
 }

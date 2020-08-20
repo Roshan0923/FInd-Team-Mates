@@ -53,6 +53,9 @@ import { PendingInvitationComponent } from './pending-invitation/pending-invitat
 import { AuthGuard } from './auth.guard';
 import { TokenIntercepterService } from './token-intercepter.service';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { NgxPopper } from 'angular-popper';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -71,7 +74,9 @@ import { UpdateProfileComponent } from './update-profile/update-profile.componen
     DialogJoinGroupComponent,
     UserProfileComponent,
     PendingInvitationComponent,
-    UpdateProfileComponent
+    UpdateProfileComponent,
+    AboutUsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,ReactiveFormsModule,
@@ -109,7 +114,7 @@ import { UpdateProfileComponent } from './update-profile/update-profile.componen
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    NgbModule,FormsModule,MatNativeDateModule
+    NgbModule,FormsModule,MatNativeDateModule, NgxPopper
 
   ],
   entryComponents:[DialogJoinGroupComponent],

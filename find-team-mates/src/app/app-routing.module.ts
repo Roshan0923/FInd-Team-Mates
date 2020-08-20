@@ -1,3 +1,4 @@
+import { AboutUsComponent } from './about-us/about-us.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { PendingInvitationComponent } from './pending-invitation/pending-invitation.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
@@ -44,6 +45,9 @@ const routes: Routes = [
   },
   {
     path:'request',component:PendingInvitationComponent,canActivate:[AuthGuard]
+  },
+  {
+    path:'aboutUs',component:AboutUsComponent
   },
   {path : '**',component:PageNotFoundComponent}
 ];
