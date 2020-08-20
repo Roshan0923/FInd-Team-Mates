@@ -1,12 +1,47 @@
-.btn-grad {background-image: linear-gradient(to right, #A770EF 0%, #CF8BF3 51%, #A770EF 100%);
-color: white;
 
-}
-.btn-grad:hover
- {
-     border:1px solid lightgray;
-      background-position: right center; }
 .header{
+    margin-top: 25px;
     display: flex;
     justify-content: space-between;
+}
+
+
+.btn{
+	background-color: #2E4053;
+	color: #F7F9F9;
+	text-decoration: none;
+	border: 0px;	
+}
+
+
+.btn:hover{
+	color: #f7f9f9cb;
+}
+.btn:active:focus
+{
+	border-color: #F7F9F9;
+	background-color: #2E4053;;
+}
+.title{
+	text-align: center;
+	font-weight: 400 ;
+	color:  #2471A3;
+	font-size: 30px;
+
+}
+
+.search{
+    border-color:#2E4053;
+}
+
+.card-header{
+    font-size: 20px;
+    background-color: #2471A3;
+    color: #F7F9F9;
+}
+
+.sub-heading{
+    font-weight: 300 ;
+	color:  #2471A3;
+	font-size: 15px;
 }

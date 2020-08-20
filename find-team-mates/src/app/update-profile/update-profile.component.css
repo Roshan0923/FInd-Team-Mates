@@ -1,3 +1,29 @@
 
 				                
-body{margin-top:20px;}				              
+body{margin-top:20px;}	
+
+.title{
+	
+	font-weight: 400 ;
+	color:  #2471A3;
+	font-size: 30px;
+
+}
+
+
+.btn{
+	background-color: #2E4053;
+	color: #F7F9F9;
+	text-decoration: none;
+	border: 0px;	
+}
+
+
+.btn:hover{
+	color: #f7f9f9cb;
+}
+.btn:active:focus
+{
+	border-color: #F7F9F9;
+	background-color: #2E4053;;
+}

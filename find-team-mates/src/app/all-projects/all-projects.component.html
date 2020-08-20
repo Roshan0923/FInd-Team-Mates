@@ -1,29 +1,32 @@
 <div class="container">
   <div class="header">
-    <h1 class="display-2">List Of all the projects</h1>
-  <button  class="btn btn-grad mb-2 rounded-pill shadow-sm" (click)=createOwnProject()>Create Your Own project</button>
-   
+    <h1 class="title display-2">List of all the projects</h1>
+    <!-- <button class="btn rounded-pill" (click)=createOwnProject()>Create Your Own project</button> -->
   </div>
-  <div class="search-div form-group">
-    <input class="blog-search-input form-control" type="text" [(ngModel)]="Search"  id="Search"  [ngModelOptions]="{standalone: true}"
-        placeholder="Search by project name or front-end or back-end technolgy used ">
-</div>
-<div *ngIf="Search" class="alert alert-primary" role="alert">
-Result contain <b>{{Search}}</b> term in Project name or Front-end or back-end 
-</div>
-    <div class="card" *ngFor="let data of Allproject | filter:Search" style="margin-top: 20px;">
-        <h3 class="card-header" style="background-color:#adb8ae;"><b>{{data.project_name}}</b></h3>
-        <div class="card-body">
-            <p><b>Project Description</b></p>
-          <p class="card-text">{{data.project_description}}</p>
-          <p><b>Expected project deadine</b></p>
-          <p>{{data.deadline| date:'yyyy-MM-dd'}}</p>
-    
-          <div style="float: right;" >
-          <button mat-raised-button (click)="getDetailedProject(data)" color="primary" style="margin-right: 15px;">Details</button>
-          <!-- <button mat-button color="warn" (click)="onClickToDeletProject(data)">Delete Project</button> -->
-          </div>
-    
-        </div>
+  <div class="search-div form-group mt-3">
+    <input class="search form-control" type="text" [(ngModel)]="Search" id="Search"
+      [ngModelOptions]="{standalone: true}"
+      placeholder="Search by project name or front-end or back-end technolgy used ">
+  </div>
+
+  <div *ngIf="Search" class="alert alert-primary" role="alert">
+    Result contain <b>{{Search}}</b> term in Project name or Front-end or back-end
+  </div>
+
+  <div class="card" *ngFor="let data of Allproject | filter:Search" style="margin-top: 20px;">
+    <h3 class="card-header">{{data.project_name}}</h3>
+    <div class="card-body m-0">
+      <p class="sub-heading  m-0 p-0">Project Description</p>
+      <p class="card-text">{{data.project_description}}</p>
+      <p class="sub-heading  m-0 p-0">Expected project deadine</p>
+      <p>{{data.deadline| date:'yyyy-MM-dd'}}</p>
+
+      <div style="float: right;">
+        <button class="btn" (click)="getDetailedProject(data)" color="primary"
+          style="margin-right: 15px;">View Project details</button>
+        <!-- <button mat-button color="warn" (click)="onClickToDeletProject(data)">Delete Project</button> -->
       </div>
+
     </div>
+  </div>
+</div>

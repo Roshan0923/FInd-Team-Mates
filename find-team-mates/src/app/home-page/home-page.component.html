@@ -1,45 +1,75 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewreport" content="width=device-width, initial-scale=1.0">
-	<title>
-		html css and bootstrap 4 simple landing page
-	</title>
-	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-	<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet" />
 
-</head>
-<body>
-	<div class="container-fluid banner">
-		<div class="row">
-			<div class="col-md-12">
-				<nav class="navbar navbar-md">
-					<div class="navbar-brand">SPITAL</div>
-					<ul class="nav">
-						<li class="nav-item">
-							<a class="nav-link" href="#">HOME</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">PORTFOLIO</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">ABOUT</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">CONTACT</a>
-						</li>
-					</ul>
-				</nav>
-			</div>
-			<div class="col-md-8 offset-md-2 info">
-				<h1 class="text-center">SPITAL</h1>
-				<p class="text-center">
-					Lorem ipsum dolor sit amet, consectetur adipisicing
-				</p>
-				<a href="#" class="btn btn-md text-center">GET STARTED</a>
-			</div>
+  <header>
+	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+	  <ol class="carousel-indicators">
+		<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+		<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+		<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+	  </ol>
+	  <div class="carousel-inner" role="listbox">
+		<!-- Slide One - Set the background image for this slide in the line below -->
+		<div class="carousel-item active"style="background-color: #2E4053;">
+			<div class="main-heading">
+			<img src="../../assets/teammate.png" style="margin-bottom: 25px;" height="250px" width="250px">
+			<h1 class="display-3 heading">Find and join various IT Projects</h1>
+			<p class="lead ">This is a description for the first slide.</p>
+		  </div>
 		</div>
+		<!-- Slide Two - Set the background image for this slide in the line below -->
+		<div class="carousel-item"style="background-color: #2E4053;">
+			<div class="main-heading">
+			<img src="https://image.flaticon.com/icons/svg/993/993515.svg" style="margin-bottom: 25px;" height="250px" width="250px">
+			<h1 class="display-3 heading">Create your own project</h1>
+			<p class="lead">This is a description for the second slide.</p>
+		  </div>
+		</div>
+		<!-- Slide Three - Set the background image for this slide in the line below -->
+		<div class="carousel-item" style="background-color: #2E4053;">
+			<div class="main-heading">
+			<img src="https://image.flaticon.com/icons/svg/3329/3329556.svg" style="margin-bottom: 25px;" height="250px" width="250px">
+			<h1 class="display-3 heading">Find Team mates from around the globe</h1>
+			<p class="lead">This is a description for the third slide.</p>
+		  </div>
+		</div>
+	  </div>
+	  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		  </a>
+	  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		  </a>
 	</div>
-</body>
-</html>
+  </header>
+  
+<div class="container mt-5" >
+  <div class="row">
+	<div class="col-sm-6">
+	  <div class="card">
+		<div class="card-body">
+		  <h1 class="card-title">Difficulty finding Team mates?</h1>
+		  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lobortis et odio in commodo. Nunc sollicitudin id felis et vestibulum. Vestibulum convallis arcu ac enim varius, non pulvinar ipsum scelerisque. Sed fringilla lacus quis purus fringilla, a porttitor nulla consequat</p>
+		  <a href="#" class="btn btn-primary">Go somewhere</a>
+		</div>
+	  </div>
+	</div>
+	<div class="col-sm-6">
+	  <div class="card">
+		<div class="card-body">
+		  <h1 class="card-title">Want to be a part of great project idea?</h1>
+		  <p class="card-text">Phasellus ut sem ut nulla tempus placerat. Suspendisse hendrerit euismod vulputate. Nullam turpis nunc, feugiat eget molestie quis</p>
+		  <a href="#" class="btn btn-primary">Go somewhere</a>
+		</div>
+	  </div>
+	</div>
+  </div>
+</div>
+
+
+ 
+<div class="container not-registered" style="margin-bottom: 50px;">
+	<h1 class="action">Not registered?</h1>
+	<p>To be able to access all the feature of the application you need to register.Registration proceess is very simple and will not take much of your time.Once registered, you will be able to access all the feaature.</p>
+	<button class="btn register">Register</button>
+</div>

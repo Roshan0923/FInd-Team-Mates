@@ -1,0 +1,19 @@
+.title{
+
+	font-weight: 400 ;
+	color:  #2471A3;
+	font-size: 30px;
+
+}
+
+.card-header{
+    font-size: 20px;
+    background-color: #2471A3;
+    color: #F7F9F9;
+}
+
+.sub-heading{
+    font-weight: 300 ;
+	color:  #2471A3;
+	font-size: 15px;
+}

@@ -1,0 +1,37 @@
+.container{
+    margin-top: 50px;
+}
+
+.btn{
+	background-color: #2E4053;
+	color: #F7F9F9;
+	text-decoration: none;
+	border: 0px;
+}
+.btn:active:focus
+{
+	border-color: #F7F9F9;
+	background-color: #2E4053;;
+}
+
+.title{
+    text-align: center;
+    color: #2471A3;
+    font-weight: 500;
+    font-size: 25px !important;
+}
+
+label{
+    color: #2471A3;
+}
+a{
+    text-decoration: none;
+    color: #2E4053;
+    margin: 0;
+    padding-bottom: 0%;
+}
+
+a:hover{
+ 
+    border-bottom: 1px solid grey;
+}

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { LoginService } from './../login/login.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,11 +11,18 @@ export class HeaderComponent implements OnInit {
 
 
   isloggedin:boolean;
-  constructor(private service:LoginService) { }
+  constructor(private service:LoginService,private route:Router) { }
 
   ngOnInit(): void {
     this.isloggedin= this.service.loggedIn();
 
+  }
+
+  logout()
+  {
+    sessionStorage.removeItem('ID');
+    sessionStorage.removeItem('token')
+    this.route.navigate(['/home']);
   }
 
 }

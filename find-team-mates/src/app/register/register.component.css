@@ -1,0 +1,18 @@
+.btn{
+	background-color: #2E4053;
+	color: #F7F9F9;
+	text-decoration: none;
+	border: 0px;
+}
+.btn:active:focus
+{
+	border-color: #F7F9F9;
+	background-color: #2E4053;;
+}
+
+.title{
+    text-align: center;
+    color: #2471A3;
+    font-weight: 500;
+    font-size: 25px !important;
+}

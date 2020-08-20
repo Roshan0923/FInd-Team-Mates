@@ -1,12 +1,13 @@
 
-<div class="container">
-    <h1 class="display-2">Your Pending Request</h1>
+<div class="container mt-3">
+    <h1 class="display-2 title">Your Pending Request</h1>
     <div class="card" *ngFor="let data of project_data" style="margin-top: 20px;">
-        <h3 class="card-header" style="background-color:#adb8ae;"><b>{{data.project_name}}</b></h3>
+        <h3 class="card-header">{{data.project_name}}</h3>
         <div class="card-body">
-            <p><b>Name</b> {{data.requested_user_name}}<a (click)="visitProfile(data.requested_user_id)" style="color: blue;margin-left: 10px;">(Visit Profile) </a></p>
+            <p ><span class="sub-heading  m-0 p-0"><b>Name</b></span>
+           {{data.requested_user_name}}<a (click)="visitProfile(data.requested_user_id)" style="color: blue;margin-left: 10px;">(Visit Profile) </a></p>
        
-          <p><b>Message</b> {{data.message}}</p>
+          <p ><span class="sub-heading  m-0 p-0"><b>Message</b></span> {{data.message}}</p>
          
     
           <div style="float: right;" >

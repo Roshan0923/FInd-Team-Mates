@@ -19,104 +19,13 @@ https://gradientbuttons.colorion.co/popular
 
 
 
+Primary color #2E4053
+Seconadry light gray #5D6D7E OR #2471A3
+backgroud color #F7F9F9
+primary blue color #3498DB
+Secondary light blue color #D6EAF8
+subtle green color #48C9B0
+subtle light green color #76D7C4
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="col-md-12 d-flex flex-column justify-content-center">
-    <div class="row">
-        <div class="col-lg-6 col-md-8 mx-auto">
-
-            <!-- form card Registration -->
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="header-style mb-0">Create Your Project</h3>
-                </div>
-                <div class="card-body">
-
-                    <form [formGroup]="projectForm">
-                        <!-- Project Title -->
-                        <div>
-                            <mat-form-field style="width: 100%;">
-                                <mat-label>Name</mat-label>
-                                <input matInput placeholder="Enter the title of your project" formControlName="name"
-                                    required  [(value)]="user_data[0].name">
-                            </mat-form-field>
-                        </div>
-                        <div>
-
-                            <mat-form-field style="width: 100%;">
-                                <mat-label>Email-id</mat-label>
-                                <input matInput placeholder="Enter the title of your project" formControlName="email"
-                                    required>
-                            </mat-form-field>
-
-                            <mat-form-field style="width: 100%;">
-                                <mat-label>Your Description</mat-label>
-                                <textarea rows="5" matInput
-                                    placeholder="Write somthing that you want your team mate to have (e.g. Experience in specific field)"
-                                    required formControlName="description"></textarea>
-                            </mat-form-field>
-
-
-
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <mat-form-field>
-                                    <mat-label>Your Known technology</mat-label>
-                                    <input matInput placeholder="Ex. Android application,Website"
-                                        formControlName="technology" required>
-                                </mat-form-field>
-
-                            </div>
-                            <div class="col">
-                                <mat-form-field>
-                                    <mat-label>Your Known Language</mat-label>
-                                    <input matInput placeholder="Ex. Android application,Website"
-                                        formControlName="knownLanguage" required>
-                                </mat-form-field>
-                            </div>
-                        </div>
-                        <div>
-                            <mat-form-field style="width: 100%;">
-                                <mat-label>LinkedIn URL</mat-label>
-                                <input matInput placeholder="Enter the title of your project"
-                                    formControlName="linkedInUrl" required>
-                            </mat-form-field>
-                        </div>
-
-
-                        <button class="btn-lg btn-block" mat-raised-button color="primary"
-                            (click)="saveUpdatedUserInfo()">Submit</button>
-
-                    </form>
-
-                </div>
-                <!--/card-block-->
-            </div>
-            <!-- /form card login -->
-
-        </div>
-
-
-    </div>
-    <!--/row-->
-
-</div>
-<!--/col-->
-</div>
-<!--/row-->
-</div>
-<!--/container-->
+navlink hovr :#f7f9f9cb

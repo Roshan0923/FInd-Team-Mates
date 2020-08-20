@@ -1,60 +1,72 @@
-body{
-	margin:0;
-	padding:0;
-	background:#fff;
-	font-family: 'Raleway',sans-serif;
-	color: #fff;
+.carousel-item {
+	height: 65vh;
 }
-.banner{
-	height: 100vh;
-	width: 100%;
-	background:url('https://picsum.photos/seed/picsum/200/300'),url('https://picsum.photos/seed/picsum/200/300');
-	background-position: top;
-	background-size:cover;
-	/*background-attachment: fixed;*/
-	background-repeat: no-repeat;
+
+.btn{
+	background-color: #2E4053;
+	color: #F7F9F9;
+	text-decoration: none;
+	border: 0px;	
 }
-.banner .navbar{
-	margin-top:4%;
+
+
+.btn:hover{
+	color: #f7f9f9cb;
 }
-.banner .navbar-brand{
-	color: #fff;
-	font-size:1.8em;
-	font-weight: 700;
-	margin-left: 10%;
+.btn:active:focus
+{
+	border-color: #F7F9F9;
+	background-color: #2E4053;;
 }
-.banner .nav{
-	margin-right:10%; 
+
+
+img{
+	max-width: 100%;
+	height: auto;
+	}
+.main-heading{
+	margin-top: 50px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
-.banner .nav li a{
-	color:#aaa;
-	font-size: 1.2em;
+
+.heading
+{
+	color: #F7F9F9;
 }
-.banner .info{
-	margin-top:15%;
-	transform: translateY(-15%);
+
+.lead{
+	color: #F7F9F9;
 }
-.banner .info h1{
-	font-size: 2.5em;
-	font-weight: 700;
-	color: #fff;
-	letter-spacing: 2px;
+
+.card{
+	height: 250px;
 }
-.banner .info p{
-	font-size: 2em;
-	font-weight: 500;
-	color: #aaa;
-	letter-spacing: 2px;
+.card-title{
+	text-align: center;
+	font-weight: 500 ;
+	color:  #2471A3;
+	font-size: 20px;
+
 }
-.banner .info a{
-	margin-left:50%;
-	transform: translateX(-50%);
-	color: #fff;
-	background: #e91d43;
-	padding:10px 20px; 
-	font-size: 2em;
-	font-weight: 600;
+.card-text{
+	color: #65798f;
 }
-.banner .info a:hover{
-	background: #e91e63;
+
+.not-registered{
+	margin-top: 30px;
 }
+.action{
+	color: #2471A3;
+	margin: 0;
+}
+.register{
+	background-color: #2E4053;
+	color: #F7F9F9;
+}
+.register:hover{
+	color: #f7f9f9cb;
+}
+

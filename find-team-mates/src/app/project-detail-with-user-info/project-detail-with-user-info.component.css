@@ -1,13 +1,27 @@
 body{
     font-size: 16px;
-    color: #6f6f6f;
+    color: #2E4053;
     font-weight: 400;
     line-height: 28px;
     letter-spacing: 0.8px;
-    margin-top:20px;
+    margin-top:0px;
 }
 .font-size38 {
     font-size: 38px;
+}
+
+.profile{
+    background-color:#2E4053;
+    color: #F7F9F9;
+}
+
+h5{
+    font-size: 20px;
+    font-weight: 200;
+}
+
+.sub-heading{
+    font-weight: 300;
 }
 .team-single-text .section-heading h4,
 .section-heading h5 {
@@ -16,6 +30,35 @@ body{
 
 .team-single-text .section-heading.half {
     margin-bottom: 20px
+}
+
+
+
+.title{
+    color: #2471A3;
+}
+
+.sub-title
+{
+    color: #2471A3;
+    font-weight: 200;
+}
+
+.btn{
+	background-color: #2E4053;
+	color: #F7F9F9;
+	text-decoration: none;
+	border: 0px;	
+}
+
+
+.btn:hover{
+	color: #f7f9f9cb;
+}
+.btn:active:focus
+{
+	border-color: #F7F9F9;
+	background-color: #2E4053;;
 }
 
 @media screen and (max-width: 1199px) {
@@ -53,8 +96,6 @@ hr.dashed {
     border: 1px solid #02c2c7;
     border-radius: 50%;
     color: #86bc42;
-    margin-right: 8px;
-    margin-bottom: 5px;
     -webkit-transition-duration: .3s;
     transition-duration: .3s
 }
@@ -129,111 +170,3 @@ img {
     margin-bottom: 0
 }
 
-
-.text-sky {
-    color: #02c2c7
-}
-
-.text-orange {
-    color: #e95601
-}
-
-.text-green {
-    color: #5bbd2a
-}
-
-.text-yellow {
-    color: #f0d001
-}
-
-.text-pink {
-    color: #ff48a4
-}
-
-.text-purple {
-    color: #9d60ff
-}
-
-.text-lightred {
-    color: #ff5722
-}
-
-a.text-sky:hover {
-    opacity: 0.8;
-    color: #02c2c7
-}
-
-a.text-orange:hover {
-    opacity: 0.8;
-    color: #e95601
-}
-
-a.text-green:hover {
-    opacity: 0.8;
-    color: #5bbd2a
-}
-
-a.text-yellow:hover {
-    opacity: 0.8;
-    color: #f0d001
-}
-
-a.text-pink:hover {
-    opacity: 0.8;
-    color: #ff48a4
-}
-
-a.text-purple:hover {
-    opacity: 0.8;
-    color: #9d60ff
-}
-
-a.text-lightred:hover {
-    opacity: 0.8;
-    color: #ff5722
-}
-
-.custom-progress {
-    height: 10px;
-    border-radius: 50px;
-    box-shadow: none;
-    margin-bottom: 25px;
-}
-.progress {
-    display: -ms-flexbox;
-    display: flex;
-    height: 1rem;
-    overflow: hidden;
-    font-size: .75rem;
-    background-color: #e9ecef;
-    border-radius: .25rem;
-}
-
-
-.bg-sky {
-    background-color: #02c2c7
-}
-
-.bg-orange {
-    background-color: #e95601
-}
-
-.bg-green {
-    background-color: #5bbd2a
-}
-
-.bg-yellow {
-    background-color: #f0d001
-}
-
-.bg-pink {
-    background-color: #ff48a4
-}
-
-.bg-purple {
-    background-color: #9d60ff
-}
-
-.bg-lightred {
-    background-color: #ff5722
-}

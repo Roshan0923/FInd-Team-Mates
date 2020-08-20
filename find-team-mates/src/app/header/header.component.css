@@ -1,4 +1,18 @@
 nav{
     display: flex;
     justify-content: space-between;
+    background-color: #2E4053;
+}
+.nav-link{
+    color: #F7F9F9!important;
+    margin-right: 15px;
+
+}
+
+.nav-link:hover{
+    border-bottom: 1px solid white;
+    color: #f7f9f9cb!important;
+}
+.navbar-brand{
+    color: #F7F9F9!important;
 }
