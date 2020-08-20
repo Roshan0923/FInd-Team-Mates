@@ -1,20 +1,28 @@
+import { FilterPipe } from './filter.pipe';
 import { GetAllProjectsService } from './get-all-projects.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe } from '@angular/core';
 import { Router } from '@angular/router';
+
 
 
 @Component({
   selector: 'app-all-projects',
   templateUrl: './all-projects.component.html',
-  styleUrls: ['./all-projects.component.css']
+  styleUrls: ['./all-projects.component.css'],
+
+
 })
 export class AllProjectsComponent implements OnInit {
 
+
+  Search="";
   user_id=sessionStorage.getItem('ID');
   Allproject:any;
-  constructor(private service:GetAllProjectsService,private router:Router) { }
+  constructor(private service:GetAllProjectsService,private router:Router) {
+   }
 
   ngOnInit(): void {
+  
       this.getAllData();
      
   }
@@ -35,7 +43,7 @@ export class AllProjectsComponent implements OnInit {
   {
    this.service.saveProjectInfo(data);
 
-   this.router.navigate(['/projectDetail',this.user_id]);
+   this.router.navigate(['/projectDetail',data.user_id]);
   }
 
 

@@ -56,6 +56,7 @@ import { UpdateProfileComponent } from './update-profile/update-profile.componen
 import { NgxPopper } from 'angular-popper';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { FooterComponent } from './footer/footer.component';
+import { FilterPipe } from './all-projects/filter.pipe';
 
 
 @NgModule({
@@ -76,7 +77,8 @@ import { FooterComponent } from './footer/footer.component';
     PendingInvitationComponent,
     UpdateProfileComponent,
     AboutUsComponent,
-    FooterComponent
+    FooterComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,ReactiveFormsModule,

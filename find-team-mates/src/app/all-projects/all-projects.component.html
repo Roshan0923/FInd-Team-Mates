@@ -4,7 +4,14 @@
   <button  class="btn btn-grad mb-2 rounded-pill shadow-sm" (click)=createOwnProject()>Create Your Own project</button>
    
   </div>
-    <div class="card" *ngFor="let data of Allproject" style="margin-top: 20px;">
+  <div class="search-div form-group">
+    <input class="blog-search-input form-control" type="text" [(ngModel)]="Search"  id="Search"  [ngModelOptions]="{standalone: true}"
+        placeholder="Search by project name or front-end or back-end technolgy used ">
+</div>
+<div *ngIf="Search" class="alert alert-primary" role="alert">
+Result contain <b>{{Search}}</b> term in Project name or Front-end or back-end 
+</div>
+    <div class="card" *ngFor="let data of Allproject | filter:Search" style="margin-top: 20px;">
         <h3 class="card-header" style="background-color:#adb8ae;"><b>{{data.project_name}}</b></h3>
         <div class="card-body">
             <p><b>Project Description</b></p>

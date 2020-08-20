@@ -62,17 +62,32 @@
                             </mat-chip-list>
                         </p>
 
+                        <p class="h6 lead">Current Team Member List</p>
+
+
+                        <div *ngIf="registered_user_list" class="no-margin-bottom">
+                            <div *ngFor="let data of  registered_user_list">
+                                <p><b>Name : </b> {{data.user_name}}
+                                    <a (click)="visitProfile(data.registered_user_id)" style="color: blue;margin-left: 10px;">(Visit Profile) </a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div *ngIf="registered_user_list.length==0" >
+                            <div class="alert alert-info">Currently there are no team member except the project creater.</div>
+                        </div>
                         <p class="h6 ">Type of project</p>
                         <p class="no-margin-bottom">{{project_data.type}}</p>
-                        
+
                         <p class="h6 ">Expected Deadline</p>
                         <p class="no-margin-bottom">{{project_data.deadline| date:'yyyy-MM-dd'}}</p>
-                        <button (click)="openDialog()" mat-raised-button color="primary">Request To join the project</button>
-                </div>
+                        <button (click)="openDialog()" mat-raised-button color="primary">Request To join the
+                            project</button>
+                    </div>
 
-                <div class="col-md-12">
+                    <div class="col-md-12">
 
+                    </div>
                 </div>
             </div>
         </div>
-    </div>

@@ -3,7 +3,7 @@ import { DialogJoinGroupComponent } from './../dialog-join-group/dialog-join-gro
 import { GetAllProjectsService } from './../all-projects/get-all-projects.service';
 import { ProjectDetailWithUserService } from './project-detail-with-user.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -16,11 +16,12 @@ export class ProjectDetailWithUserInfoComponent implements OnInit {
 current_logged_in_user_id=+sessionStorage.getItem('ID');
   user_request_message:any
   project_data: any
+  registered_user_list:any;
   user_data: any[];
   technology:any[];
   languale:any[];
   u_reques: user_request;
-  constructor(private route: ActivatedRoute,public dialog:MatDialog, private service: ProjectDetailWithUserService, private projectInfoservice: GetAllProjectsService) {
+  constructor(private _routeNaviagte:Router, private route: ActivatedRoute,public dialog:MatDialog, private service: ProjectDetailWithUserService, private projectInfoservice: GetAllProjectsService) {
     this.project_data = this.projectInfoservice.retriveProjectInfo();
     this.u_reques=new user_request();
    }
@@ -28,9 +29,10 @@ current_logged_in_user_id=+sessionStorage.getItem('ID');
 
   ngOnInit(): void {
     //Getting the user_id of the user who created the project(WHich is selected by the current logged in user)
-    let user_id = parseInt(this.route.snapshot.paramMap.get('user_id'));
+    let user_id_temp = parseInt(this.route.snapshot.paramMap.get('user_id'));
     //Method is called to get the user_ddetail who created the project
-   this.user_data= this.getUSerInfo(user_id);
+    console.log("user id who created the project is"+user_id_temp);
+   this.user_data= this.getUSerInfo(user_id_temp);
    //Method is called to get the project detail(Which is selected by the current logged in user to see the details)
     this.project_data = this.projectInfoservice.retriveProjectInfo();
     //console.log(this.project_data)
@@ -51,9 +53,17 @@ current_logged_in_user_id=+sessionStorage.getItem('ID');
     this.technology=tech_slpit;
     var language=this.user_data[0].language.split(',');
     this.languale=language;
+
+    this.service.getregisteredUserList(this.project_data.project_id).subscribe(data=>{
+      this.registered_user_list=data;
+      console.log(this.registered_user_list);
+    })
       
     });
+    console.log("pring the list of registered user")
+    console.log(this.registered_user_list);
       return user_info;
+
   }
 
 
@@ -61,6 +71,7 @@ current_logged_in_user_id=+sessionStorage.getItem('ID');
   name: string;
   openDialog()
   {
+    console.log(this.registered_user_list);
    let dialogRef= this.dialog.open(DialogJoinGroupComponent,{ width: '250px',
    data: {name: this.name, animal: this.animal}});
    dialogRef.afterClosed().subscribe(result => {
@@ -77,6 +88,13 @@ current_logged_in_user_id=+sessionStorage.getItem('ID');
       }
      
     });
+  }
+
+  
+  visitProfile(req_user_id:any)
+  {
+    console.log(req_user_id)
+    this._routeNaviagte.navigate(['/profile',req_user_id]);
   }
 
 }

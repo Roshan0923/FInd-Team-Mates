@@ -42,4 +42,16 @@ export class ProjectDetailWithUserService {
     console.log(user_request);
     this.httptemp.post(this.url+"insertRequest",data,httpOptions).subscribe(value => value);
   }
-}
+
+  getregisteredUserList(project_id:number)
+{
+    console.log("inside the service method to get the registered user for the project id=>"+project_id);
+   const httpOptions = {
+    headers: new HttpHeaders({      
+      'Authorization': `Bearer ${this._token.getTokenFromLocal()}` 
+    })
+  };
+   
+    console.log("service called")
+   return this.httptemp.get(this.url+"getRegisteredUserList/"+project_id,httpOptions);
+}}
