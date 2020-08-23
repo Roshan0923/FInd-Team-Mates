@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 })
 export class UpdateProfileService {
 
-  url="http://localhost:8080/updateProfile/"
+  url="https://find-team-mates-spring.herokuapp.com/updateProfile/"
   constructor(private http: HttpClient,private _token:LoginService) { }
 
   updateProfileDetails(obj:model,user_id:any)

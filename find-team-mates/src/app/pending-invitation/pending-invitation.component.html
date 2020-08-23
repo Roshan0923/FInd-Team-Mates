@@ -1,20 +1,30 @@
+<h3 *ngIf="isError" class="alert alert-info mt-3">Error while loading the data.Please try agian.</h3>
 
-<div class="container mt-3">
-    <h1 class="display-2 title">Your Pending Request</h1>
-    <div class="card" *ngFor="let data of project_data" style="margin-top: 20px;">
-        <h3 class="card-header">{{data.project_name}}</h3>
-        <div class="card-body">
-            <p ><span class="sub-heading  m-0 p-0"><b>Name</b></span>
-           {{data.requested_user_name}}<a (click)="visitProfile(data.requested_user_id)" style="color: blue;margin-left: 10px;">(Visit Profile) </a></p>
-       
-          <p ><span class="sub-heading  m-0 p-0"><b>Message</b></span> {{data.message}}</p>
-         
-    
-          <div style="float: right;" >
-          <button mat-raised-button  color="primary" (click)="onAcceptedRequest(data)" style="margin-right: 15px;">Accept Request</button>
-          <button mat-button color="warn" (click)="onDeleteRequest(data)">Delete Request</button>
-          </div>
-    
-        </div>
+<div *ngIf="!isError" class="container mt-3">
+  <h1 class="display-2 title">Your Pending Request</h1>
+  <div class="card" *ngFor="let data of project_data" style="margin-top: 20px;">
+    <h3 class="card-header">{{data.project_name}}</h3>
+    <div class="card-body">
+      <p><span class="sub-heading  m-0 p-0"><b>Name</b></span>
+        {{data.requested_user_name}}<a (click)="visitProfile(data.requested_user_id)"
+          style="color: blue;margin-left: 10px;">(Visit Profile) </a></p>
+
+      <p><span class="sub-heading  m-0 p-0"><b>Message</b></span> {{data.message}}</p>
+
+
+      <div style="float: right;">
+        <button mat-raised-button color="primary" (click)="onAcceptedRequest(data)" style="margin-right: 15px;">Accept
+          Request</button>
+        <button mat-button color="warn" (click)="onDeleteRequest(data)">Delete Request</button>
       </div>
+
     </div>
+  </div>
+</div>
+
+
+<div *ngIf="showSpinner" class="spinner-mat dark-overlay"
+  style="display: flex; justify-content: center ; align-items: center; flex-direction: column;">
+  <mat-spinner *ngIf="showSpinner"></mat-spinner><br>
+  <p *ngIf="showSpinner" style="color: white;">Please wait while we are sending decision email...</p>
+</div>

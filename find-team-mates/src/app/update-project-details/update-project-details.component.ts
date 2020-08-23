@@ -7,8 +7,8 @@ import { StoreUserSelectedDataService } from './../update-project/store-user-sel
 import { Component, OnInit } from '@angular/core';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import { Router } from '@angular/router';
-
+import { Router, ActivatedRoute } from '@angular/router';
+import { NotifierService } from "angular-notifier";
 
 export interface frontEnd{
   name: string;
@@ -26,9 +26,13 @@ export class UpdateProjectDetailsComponent implements OnInit {
 
   user_id=+sessionStorage.getItem('ID');
   data:any;
+  errorMessage:any;
+  isError=false;
+  private readonly notifier: NotifierService;
   public obj:project_model;
-  constructor(private updateService:CreateProjectService,private router:Router,private userDataService:StoreUserSelectedDataService,private _formBuilder: FormBuilder,private service:UpdateProjectService) { 
+  constructor(notifierService: NotifierService,private _aRoute:ActivatedRoute,private updateService:CreateProjectService,private router:Router,private userDataService:StoreUserSelectedDataService,private _formBuilder: FormBuilder,private service:UpdateProjectService) { 
     this.obj=new project_model();
+    this.notifier = notifierService;
   }
   projectForm:FormGroup
 
@@ -56,9 +60,14 @@ export class UpdateProjectDetailsComponent implements OnInit {
 
   ngOnInit(): void {
   
+
       this.data=this.userDataService.retriveUserData();
 
-      console.log(this.data)
+      console.log(this.data.length)
+      if(this.data.length==0){
+  this.isError=true;
+      }
+      else{
       this.projectForm = this._formBuilder.group({
         name: ['', Validators.required],frontEnd:[''],desription:[''],requirement:[''],backEnd:[''],date:[''],type:['']
       });
@@ -74,6 +83,7 @@ export class UpdateProjectDetailsComponent implements OnInit {
     {
       this.backEnd.push({name: data.trim()});
     }
+  }
   }
 
   add(event: MatChipInputEvent): void {
@@ -159,7 +169,11 @@ backEndData=""
        this.obj.user_id=this.user_id;
        console.log(this.obj)
        console.log("Calling update method");
-       this.updateService.update_project(this.obj,this.data.project_id);
+       this.updateService.update_project(this.obj,this.data.project_id).subscribe((data)=>{
+        this.router.navigate(['/projectById'],{queryParams: { updated: 'true'}});
+       },(error)=>{
+         this.errorMessage="Error while upding.Server error please try agin later"
+       });
      // let project_model=new project_model();
   }
 
@@ -167,7 +181,7 @@ backEndData=""
   {
     this.service.deleteUserSelectedProject(this.user_id,this.data.project_id).subscribe(data=>
       {
-        this.router.navigate(['/projectById']);
+        this.router.navigate(['/projectById'],{queryParams: { deleted: 'true'}});
       });
   }
 

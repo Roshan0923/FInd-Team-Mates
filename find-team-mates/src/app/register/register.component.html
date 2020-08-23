@@ -29,7 +29,13 @@
 
                         <mat-form-field>
                           <mat-label>Email</mat-label>
-                          <input matInput placeholder="Enter your Email address" formControlName="email" required>
+                          <input type="email" matInput pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+                            placeholder="Enter your Email address" formControlName="email" required>
+                          <mat-error *ngIf="firstFormGroup.get('email').hasError('required')">Email is required
+                          </mat-error>
+                          <mat-error *ngIf="firstFormGroup.get('email').hasError('email')">Please enter a valid email
+                            address
+                          </mat-error>
                         </mat-form-field>
                       </div>
                       <div class="col">
@@ -37,7 +43,12 @@
                         <mat-form-field>
                           <mat-label>Password</mat-label>
                           <input type="password" matInput placeholder="Set your Password" formControlName="password"
-                            required>
+                            required 	pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&]{4,}$">
+                            <mat-hint>Must contain 1 Uppercase,1 Lowecase alphabet and a digit</mat-hint>
+              
+                            <mat-error *ngIf="firstFormGroup.get('password').hasError('required')">Password is required
+                            </mat-error>
+                           
                         </mat-form-field>
                       </div>
                     </div>
@@ -75,29 +86,33 @@
 
                   </form>
                 </mat-step>
-                <mat-step  [stepControl]="thridFormGroup">
+                <mat-step [stepControl]="thridFormGroup">
                   <form [formGroup]="thridFormGroup">
-                  <ng-template matStepLabel>Upload Profile picture</ng-template>
-                  <div>
-                     <mat-form-field style="width: 100%;">
-                      <button type="button" mat-button color="primary" (click)="fileInput.click()">Choose File</button>
-                      <input  hidden matInput  formControlName="image">
-                    </mat-form-field> 
+                    <ng-template matStepLabel>Upload Profile picture</ng-template>
                     <div>
-                      <button mat-button matStepperPrevious>Back</button>
-                      <button mat-raised-button matStepperNext>Next</button>
+                      <mat-form-field style="width: 100%;">
+                        <button type="button" mat-button color="primary" (click)="fileInput.click()">Choose
+                          File</button>
+                        <input hidden matInput formControlName="image" required>
+                      </mat-form-field>
+                      <div>
+                        <button mat-button matStepperPrevious>Back</button>
+                        <button mat-raised-button matStepperNext>Next</button>
+                      </div>
+
+
                     </div>
-
-
-                  </div>
                   </form>
                 </mat-step>
                 <mat-step>
                   <ng-template matStepLabel>Done</ng-template>
-                  <p  class="alert alert-danger" *ngIf="!firstFormGroup.valid || !secondFormGroup.valid" >Plese complete all the required field</p>
-                  <p class="alert alert-success"  *ngIf="firstFormGroup.valid && secondFormGroup.valid" >You are good to go..</p>
+                  <p class="alert alert-danger" *ngIf="!firstFormGroup.valid || !secondFormGroup.valid">Plese complete
+                    all the required field</p>
+                  <p class="alert alert-success" *ngIf="firstFormGroup.valid && secondFormGroup.valid">You are good to
+                    go..</p>
                   <div>
-                    <button class="btn btn-lg btn-block" mat-raised-button color="primary" [disabled]="!firstFormGroup.valid || !secondFormGroup.valid" (click)="submit()">Submit</button>
+                    <button class="btn btn-lg btn-block" mat-raised-button color="primary"
+                      [disabled]="!firstFormGroup.valid || !secondFormGroup.valid" (click)="submit()">Submit</button>
 
                   </div>
                 </mat-step>

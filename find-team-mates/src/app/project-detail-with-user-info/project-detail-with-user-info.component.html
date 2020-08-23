@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
     integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
-<div class="container mt-4">
+    <div class="alert-info alert mt-3 ml-3 mr-3 "  *ngIf="!project_data">Problem while fetching the project info. Please try agian later</div>
+<div class="container mt-4" *ngIf="project_data && user_data[0].name">
     <div class="team-single">
         <div class="row">
             <div class="profile col-lg-4 col-md-5 xs-margin-30px-bottom">

@@ -8,8 +8,8 @@ import { Injectable } from '@angular/core';
 export class GetPendingRequestService {
 
 
-  url = "http://localhost:8080/project/"
-  email_notification_url = "http://localhost:8080/sendingEmail"
+  url = "https://find-team-mates-spring.herokuapp.com/project/"
+  email_notification_url = "https://find-team-mates-spring.herokuapp.com/sendingEmail"
   constructor(private http: HttpClient, private _token: LoginService) { }
 
   //Service method to get the pending request

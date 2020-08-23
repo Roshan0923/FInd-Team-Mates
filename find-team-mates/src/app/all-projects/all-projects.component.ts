@@ -16,6 +16,7 @@ export class AllProjectsComponent implements OnInit {
 
 
   Search="";
+  isError=false;
   user_id=sessionStorage.getItem('ID');
   Allproject:any;
   constructor(private service:GetAllProjectsService,private router:Router) {
@@ -33,8 +34,12 @@ export class AllProjectsComponent implements OnInit {
   {
     this.service.getAllProjects().subscribe(data=>
       {
+
           this.Allproject=data;
           console.log(this.Allproject)
+      },(error)=>
+      {
+      this.isError=true;
       })
   }
 

@@ -10,7 +10,7 @@ import { throwError } from 'rxjs';
 export class UpdateProjectService {
 
 
-  url="http://localhost:8080/project/"
+  url="https://find-team-mates-spring.herokuapp.com/project/"
   constructor(private http: HttpClient,private _token:LoginService) { }
   getUserCreatedProjects(user_id:any)
   {
@@ -21,7 +21,7 @@ export class UpdateProjectService {
     };
    
    // let project_model=new project_model();
-  return this.http.get("http://localhost:8080/project/getUSerCreatedProject/"+user_id,httpOptions);
+  return this.http.get("https://find-team-mates-spring.herokuapp.com/project/getUSerCreatedProject/"+user_id,httpOptions);
   }
 
   deleteUserSelectedProject(user_id:any,project_id:any)

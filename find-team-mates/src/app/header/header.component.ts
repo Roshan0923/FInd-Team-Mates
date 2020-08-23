@@ -1,3 +1,5 @@
+
+import { from, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { LoginService } from './../login/login.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,18 +12,32 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
 
-  isloggedin:boolean;
-  constructor(private service:LoginService,private route:Router) { }
+  userSub: Subscription;
 
+  status:boolean;
+//  loginStatus$ : Observable<boolean>;
+  
+
+  //isloggedin:boolean;
+  constructor(private service:LoginService,private route:Router) {
+   
+   }
   ngOnInit(): void {
-    this.isloggedin= this.service.loggedIn();
+    this.userSub = this.service.loggedInStatus.subscribe(user => {
+      this.status = user ? true : false;
+
+     
+    })
 
   }
+
+
 
   logout()
   {
     sessionStorage.removeItem('ID');
     sessionStorage.removeItem('token')
+    this.service.logout();
     this.route.navigate(['/home']);
   }
 

@@ -57,7 +57,7 @@ import { NgxPopper } from 'angular-popper';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { FooterComponent } from './footer/footer.component';
 import { FilterPipe } from './all-projects/filter.pipe';
-
+import { NotifierModule } from "angular-notifier";
 
 @NgModule({
   declarations: [
@@ -116,7 +116,7 @@ import { FilterPipe } from './all-projects/filter.pipe';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    NgbModule,FormsModule,MatNativeDateModule, NgxPopper
+    NgbModule,FormsModule,MatNativeDateModule, NgxPopper,NotifierModule
 
   ],
   entryComponents:[DialogJoinGroupComponent],

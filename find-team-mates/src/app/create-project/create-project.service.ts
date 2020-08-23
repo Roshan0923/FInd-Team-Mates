@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 })
 export class CreateProjectService {
 
-  url="http://localhost:8080/"
+  url="https://find-team-mates-spring.herokuapp.com/"
   constructor(private http: HttpClient,private _token:LoginService) { }
   create_project(obj:project_model)
   {
@@ -30,6 +30,6 @@ export class CreateProjectService {
         'Authorization': `Bearer ${this._token.getTokenFromLocal()}` 
       })
     };
-    this.http.put(this.url+"project/updateProject/"+project_id,obj,httpOptions).subscribe(value=>value);      
+   return this.http.put(this.url+"project/updateProject/"+project_id,obj,httpOptions);      
   }
 }

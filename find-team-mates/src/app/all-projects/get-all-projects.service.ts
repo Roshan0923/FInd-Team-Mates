@@ -10,7 +10,7 @@ export class GetAllProjectsService {
   
   projectDetail:any
 
-  url="http://localhost:8080/allProject/"
+  url="https://find-team-mates-spring.herokuapp.com/allProject/"
   constructor(private http: HttpClient,private _token:LoginService) { }
   getAllProjects()
   {

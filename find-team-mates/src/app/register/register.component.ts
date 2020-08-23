@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { register_user } from './register_user';
 import { RegisterUserService } from './register-user.service';
 import { Component, OnInit } from '@angular/core';
@@ -16,7 +17,7 @@ export class RegisterComponent implements OnInit {
 
   messageData:any;
  public obj:register_user
-  constructor(private service:RegisterUserService,private httpClient: HttpClient,private _formBuilder: FormBuilder) {
+  constructor(private service:RegisterUserService,private httpClient: HttpClient,private _formBuilder: FormBuilder,private route:Router) {
     this.obj=new register_user();
    }
   firstFormGroup: FormGroup;
@@ -29,7 +30,7 @@ export class RegisterComponent implements OnInit {
   srcResult:any
   ngOnInit(): void {
     this.firstFormGroup = this._formBuilder.group({
-      name: ['', Validators.required],email:[''],password:[''],linkedInUrl:['']
+      name: ['', Validators.required],email:['',[Validators.required, Validators.email]],password:['',[Validators.required]],linkedInUrl:['']
     });
     this.secondFormGroup = this._formBuilder.group({
       desription: ['', Validators.required],technology:[''],language:['']
@@ -67,6 +68,7 @@ export class RegisterComponent implements OnInit {
        if(error.status==200)
        {
          this.messageData="Succussfull registration"
+         this.route.navigate(['/login'],{queryParams: { registered: 'true'}});
        }
       else if(error.status==500)
        {

@@ -5,7 +5,7 @@ import { ProjectDetailWithUserService } from './project-detail-with-user.service
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-
+import { NotifierService } from "angular-notifier";
 @Component({
   selector: 'app-project-detail-with-user-info',
   templateUrl: './project-detail-with-user-info.component.html',
@@ -21,9 +21,11 @@ current_logged_in_user_id=+sessionStorage.getItem('ID');
   technology:any[];
   languale:any[];
   u_reques: user_request;
-  constructor(private _routeNaviagte:Router, private route: ActivatedRoute,public dialog:MatDialog, private service: ProjectDetailWithUserService, private projectInfoservice: GetAllProjectsService) {
+  private readonly notifier: NotifierService;
+  constructor(notifierService: NotifierService,private _routeNaviagte:Router, private route: ActivatedRoute,public dialog:MatDialog, private service: ProjectDetailWithUserService, private projectInfoservice: GetAllProjectsService) {
     this.project_data = this.projectInfoservice.retriveProjectInfo();
     this.u_reques=new user_request();
+    this.notifier = notifierService;
    }
 
 
@@ -84,7 +86,12 @@ current_logged_in_user_id=+sessionStorage.getItem('ID');
         this.u_reques.project_id=this.project_data.project_id;
         this.u_reques.user_id=this.project_data.user_id
         this.u_reques.request_user_id=this.current_logged_in_user_id
-        this.service.storeUserRequestToJoin(this.u_reques);
+        this.service.storeUserRequestToJoin(this.u_reques).subscribe((data)=>{
+          this.notifier.notify("success","Your message has been sent successfully.You will be notified via Email regarding the decision.")
+        },
+        (error)=>{
+          console.log("error"+error)
+        });
       }
      
     });

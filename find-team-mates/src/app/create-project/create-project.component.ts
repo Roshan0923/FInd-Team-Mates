@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { CreateProjectService } from './create-project.service';
 import { project_model } from './project_model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -5,6 +6,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import { NotifierService } from "angular-notifier";
+
 export interface frontEnd{
   name: string;
 }
@@ -23,6 +26,7 @@ export class CreateProjectComponent implements OnInit {
 
   //TO BE CHNAGE USER_ID
   user_id:number=+sessionStorage.getItem('ID');
+  private readonly notifier: NotifierService;
  public obj:project_model;
   visible = true;
   selectable = true;
@@ -49,8 +53,10 @@ export class CreateProjectComponent implements OnInit {
   ];
 
 
-  constructor(private httpClient: HttpClient,private _formBuilder: FormBuilder,private service:CreateProjectService) {
+  constructor(notifierService: NotifierService,private httpClient: HttpClient,private _formBuilder: FormBuilder,private service:CreateProjectService,private router:Router) {
     this.obj=new project_model();
+    this.notifier = notifierService;
+
    }
 
   projectForm:FormGroup
@@ -151,11 +157,13 @@ backEndData=""
       (error)=>{
           if(error.status==200)
           {
-              this.messageData="Successfully created the project"
+              this.messageData="Successfully created the project."
+              this.router.navigate(['/projectById'],{queryParams: { created: 'true'}});
+
           }
           else
           {
-            this.messageData="Error";
+            this.messageData="Error in Server please try agian after some time.";
           }
           
       });

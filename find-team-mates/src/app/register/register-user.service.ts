@@ -8,7 +8,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 })
 export class RegisterUserService {
 
-  url="http://localhost:8080/"
+  url="https://find-team-mates-spring.herokuapp.com/"
   constructor(private http: HttpClient) { }
 
 //   name:string;

@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
 export class ProjectDetailWithUserService {
 
   
-  url="http://localhost:8080/allProject/"
+  url="https://find-team-mates-spring.herokuapp.com/allProject/"
   constructor(private httptemp: HttpClient,private _token:LoginService) { }
   getUserInfo(user_id:any)
   {
@@ -40,7 +40,7 @@ export class ProjectDetailWithUserService {
     }
     console.log("service called")
     console.log(user_request);
-    this.httptemp.post(this.url+"insertRequest",data,httpOptions).subscribe(value => value);
+  return  this.httptemp.post(this.url+"insertRequest",data,httpOptions);
   }
 
   getregisteredUserList(project_id:number)

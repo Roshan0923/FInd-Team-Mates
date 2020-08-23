@@ -1,10 +1,10 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UpdateProfileService } from './update-profile.service';
 import { model } from './model';
 import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
 import { ProjectDetailWithUserService } from './../project-detail-with-user-info/project-detail-with-user.service';
 import { Component, OnInit } from '@angular/core';
-
+import { NotifierService } from "angular-notifier";
 @Component({
   selector: 'app-update-profile',
   templateUrl: './update-profile.component.html',
@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdateProfileComponent implements OnInit {
 
-
+  private readonly notifier: NotifierService;
   tempForm: FormGroup
   user_id = sessionStorage.getItem('ID');
   user_data: any[];
@@ -23,12 +23,23 @@ export class UpdateProfileComponent implements OnInit {
   message: string;
 
   public obj: model;
-  constructor(private service: ProjectDetailWithUserService, private _formBuilder: FormBuilder,private updateService:UpdateProfileService,private route:Router) { }
+  constructor(private _aroute:ActivatedRoute,notifierService: NotifierService,private service: ProjectDetailWithUserService, private _formBuilder: FormBuilder,private updateService:UpdateProfileService,private route:Router) {
+    this.notifier = notifierService;
+   }
 
   ngOnInit(): void {
     this.user_data = this.getUSerInfo(this.user_id);
     console.log(this.user_data);
     this.obj = new model();
+
+    this._aroute.queryParams
+    .subscribe(params => {
+      if(params.updated !== undefined && params.updated === 'true') {
+        this.notifier.notify("success", "Your Profile updated successfully");
+      }
+      if(params.updated !== undefined && params.updated === 'false') {
+        this.notifier.notify("info", "Error while updating your profile");
+      }});
   }
 
   getUSerInfo(user_id: any) {
@@ -50,7 +61,6 @@ export class UpdateProfileComponent implements OnInit {
     this.obj.file=this.user_data[0].image;
     if (form.valid) {
       console.log(form.value)
-      console.log("valid form")
       this.obj.name = form.value.name;
       this.obj.email = this.user_data[0].email;
       this.obj.description = form.value.description;
@@ -59,10 +69,22 @@ export class UpdateProfileComponent implements OnInit {
       this.obj.file = this.selectedFile;
       this.obj.linkedIn_url = form.value.linkedIn_url;
       this.updateService.updateProfileDetails(this.obj,this.user_id).subscribe((data)=>{
-        window.location.reload();
+        console.log("data")
+        console.log(data)
+        this.notifier.notify("success","Profile updated successfully")
       },
       (error)=>{
-        window.location.reload();
+        console.log("error")
+        if(error.status==200){
+          this.route.navigate(['updateProfile'],{queryParams: { updated: 'true'}})
+       
+        }
+        else{
+          this.route.navigate(['updateProfile'],{queryParams: { updated: 'false'}})
+         
+        }
+
+     
       }
       );
     }

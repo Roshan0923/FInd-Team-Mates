@@ -1,41 +1,63 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
-  <a class="navbar-brand" href="#">Find Team Mates </a>
+  <a class="navbar-brand" href="#"> Team Mates </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon" ></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-    <ul *ngIf="!isloggedin" class="navbar-nav ml-auto">
+    <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a style="color: #F7F9F9;" class="nav-link" routerLink="/login">Login</a>
+        <a  *ngIf="!status"  style="color: #F7F9F9;" class="nav-link" routerLink="/login">Login</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink='/register'>Register</a>
+        <a  *ngIf="!status" class="nav-link" routerLink='/register'>Register</a>
+      </li>
+      <li class="nav-item">
+        <a  *ngIf="!status" class="nav-link" routerLink='/aboutUs'>About Developer</a>
       </li>
     </ul>
 
-    <ul *ngIf="isloggedin" class="navbar-nav ml-auto" style="margin-right: 15px;">
+    <ul *ngIf="status" class="navbar-nav ml-auto" style="margin-right: 15px;">
       <li class="nav-item active">
-        <a class="nav-link" routerLink="/allProjects">View Projects <span class="sr-only"></span></a>
+        <a *ngIf="status" class="nav-link" routerLink="/allProjects">View Projects <span class="sr-only"></span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink='/project'>Create new project</a>
+        <a   *ngIf="status" class="nav-link" routerLink='/project'>Create new project</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle nav-link nav-link-menu" id="navbarDropdownMenuLink" data-toggle="dropdown">
+        <a  *ngIf="status" class="nav-link dropdown-toggle nav-link nav-link-menu" id="navbarDropdownMenuLink" data-toggle="dropdown">
           Manage Projects
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" routerLink="/projectById" routerLinkActive="nav-active">View Your Projects</a>
-          <a class="dropdown-item" routerLink="/request" routerLinkActive="nav-active">View pending request</a>
+          <a   *ngIf="status" class="dropdown-item" routerLink="/projectById" routerLinkActive="nav-active">View Your Projects</a>
+          <a  *ngIf="status" class="dropdown-item" routerLink="/request" routerLinkActive="nav-active">View pending request</a>
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink='/updateProfile'>Profile</a>
+        <a  *ngIf="status" class="nav-link" routerLink='/updateProfile'>Profile</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" (click)="logout()">Logout</a>
+        <a  *ngIf="status" class="nav-link" data-toggle="modal" data-target="#exampleModal">Logout</a>
       </li>
     </ul>
   </div>
 </nav>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Are you sure Do you want to logout?</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>  
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn" style="background-color: #2E4053; color: white;" (click)="logout()" data-dismiss="modal">LogOut</button>
+      </div>
+    </div>
+  </div>
+</div>
